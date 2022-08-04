@@ -38,6 +38,9 @@ public class Address {
     @OneToOne(mappedBy = "address", cascade = CascadeType.PERSIST)
     private Hospital hospital;
 
+    public Address() {
+    }
+
     public Address(Long id, String street, String district, String cep, String state, String city) {
         this.id = id;
         this.street = street;

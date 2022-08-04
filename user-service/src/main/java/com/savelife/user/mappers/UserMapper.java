@@ -1,4 +1,4 @@
-package com.savelife.user.dto.user;
+package com.savelife.user.mappers;
 
 import com.savelife.user.dto.user.RegistryUserDTO;
 import com.savelife.user.dto.user.SearchUserDTO;
