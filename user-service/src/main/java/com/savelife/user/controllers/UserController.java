@@ -2,7 +2,7 @@ package com.savelife.user.controllers;
 
 import com.savelife.user.dto.user.RegistryUserDTO;
 import com.savelife.user.dto.user.SearchUserDTO;
-import com.savelife.user.dto.user.UserMapper;
+import com.savelife.user.mappers.UserMapper;
 import com.savelife.user.entities.User;
 import com.savelife.user.services.UserService;
 import io.swagger.annotations.Api;
