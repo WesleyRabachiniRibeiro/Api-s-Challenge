@@ -5,7 +5,6 @@ import com.savelife.hospital.repositories.HospitalRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
@@ -23,7 +22,7 @@ public class HospitalService {
         return repository.save(user);
     }
 
-    public Hospital findHospital(@PathVariable Long id){
+    public Hospital findHospital(Long id){
         Optional<Hospital> user = repository.findById(id);
         return user.orElseThrow(() -> new EntityNotFoundException("Hospital Not Found!"));
     }
@@ -38,7 +37,7 @@ public class HospitalService {
         return repository.save(updatedHospital);
     }
 
-    public void deleteHospital(@PathVariable Long id){
+    public void deleteHospital(Long id){
         Hospital hospital = this.findHospital(id);
         repository.delete(hospital);
     }

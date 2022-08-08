@@ -1,28 +1,28 @@
 package com.savelife.hospital.dto.hospital;
 
 
+import com.savelife.hospital.dto.address.SearchAddress;
+import com.savelife.hospital.dto.phone.SearchPhone;
 import com.savelife.hospital.entities.Address;
+import com.savelife.hospital.entities.Phone;
+
+import java.util.List;
 
 public class SearchHospital {
 
-    private Long id;
-
     private String name;
 
-    private Address address;
+    private SearchAddress address;
 
-    public SearchHospital(Long id, String name, Address address) {
-        this.id = id;
+    private List<SearchPhone> phone;
+
+    public SearchHospital() {
+    }
+
+    public SearchHospital(String name, SearchAddress address, List<SearchPhone> phone) {
         this.name = name;
         this.address = address;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+        this.phone = phone;
     }
 
     public String getName() {
@@ -33,11 +33,19 @@ public class SearchHospital {
         this.name = name;
     }
 
-    public Address getAddress() {
+    public SearchAddress getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(SearchAddress address) {
         this.address = address;
+    }
+
+    public List<SearchPhone> getPhone() {
+        return phone;
+    }
+
+    public void setPhone(List<SearchPhone> phone) {
+        this.phone = phone;
     }
 }

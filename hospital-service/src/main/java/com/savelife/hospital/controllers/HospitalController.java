@@ -38,12 +38,14 @@ public class HospitalController {
     @ApiOperation(value = "Create new Hospitals")
     public ResponseEntity<SearchHospital> saveHospital(@RequestBody RegistryHospital dto){
         Hospital hospital = service.saveHospital(HospitalMapper.fromDTO(dto));
+        System.out.println(hospital.getAddress().getId());
         return new ResponseEntity<SearchHospital>(HospitalMapper.fromEntity(hospital), HttpStatus.CREATED);
     }
 
     @GetMapping
     @ApiOperation(value = "Return all registered hospitals")
     public ResponseEntity<Page<SearchHospital>> findAllHospital(@PageableDefault Pageable pageable){
+        System.out.println(service.listAllHospitals(pageable).map(HospitalMapper::fromEntity));
         return ResponseEntity.ok(service.listAllHospitals(pageable).map(HospitalMapper::fromEntity));
     }
 

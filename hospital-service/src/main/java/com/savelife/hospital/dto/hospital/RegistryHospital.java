@@ -2,6 +2,9 @@ package com.savelife.hospital.dto.hospital;
 
 
 import com.savelife.hospital.entities.Address;
+import com.savelife.hospital.entities.Phone;
+
+import java.util.List;
 
 public class RegistryHospital {
 
@@ -9,9 +12,15 @@ public class RegistryHospital {
 
     private Address address;
 
-    public RegistryHospital(String name, Address address) {
+    private List<Phone> phone;
+
+    public RegistryHospital() {
+    }
+
+    public RegistryHospital(String name, Address address, List<Phone> phone) {
         this.name = name;
         this.address = address;
+        this.phone = phone;
     }
 
     public String getName() {
@@ -28,5 +37,13 @@ public class RegistryHospital {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public List<Phone> getPhone() {
+        return phone;
+    }
+
+    public void setPhone(List<Phone> phone) {
+        this.phone = phone;
     }
 }

@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -35,14 +36,14 @@ public class Address {
     @Column(name = "DS_MUNICIPIO")
     private String city;
 
-    @OneToOne(mappedBy = "address", cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "CD_HOSPITAL")
     private Hospital hospital;
 
     public Address() {
     }
 
-    public Address(Long id, String street, String district, String cep, String state, String city) {
-        this.id = id;
+    public Address(String street, String district, String cep, String state, String city) {
         this.street = street;
         this.district = district;
         this.cep = cep;
@@ -96,5 +97,13 @@ public class Address {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public Hospital getHospital() {
+        return hospital;
+    }
+
+    public void setHospital(Hospital hospital) {
+        this.hospital = hospital;
     }
 }

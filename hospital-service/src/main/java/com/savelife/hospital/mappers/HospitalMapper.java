@@ -10,15 +10,16 @@ public class HospitalMapper {
         return new Hospital(
                 null,
                 hospital.getName(),
-                hospital.getAddress()
+                hospital.getAddress(),
+                hospital.getPhone()
         );
     }
 
     public static SearchHospital fromEntity(Hospital hospital){
         return new SearchHospital(
-                hospital.getId(),
                 hospital.getName(),
-                hospital.getAddress()
+                AddressMapper.fromEntity(hospital.getAddress()),
+                PhoneMapper.fromListEntity(hospital.getPhone())
         );
     }
 
