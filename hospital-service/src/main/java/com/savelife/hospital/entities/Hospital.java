@@ -6,11 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -27,10 +27,11 @@ public class Hospital {
     @Column(name = "NM_HOSPITAL")
     private String name;
 
-    @OneToOne(mappedBy = "hospital",cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "CD_ENDERECO", referencedColumnName = "CD_ENDERECO")
     private Address address;
 
-    @OneToMany(mappedBy = "hospital", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "hospital")
     private List<Phone> phone;
 
     public Hospital() {

@@ -9,18 +9,24 @@
         <outputRelativeToContentRoot value="true" />
         <module name="savelife" />
         <module name="hospital-service" />
+        <module name="request-service" />
+        <module name="ambulance-service" />
         <module name="user-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="ambulance-service" target="17" />
       <module name="hospital-service" target="17" />
+      <module name="request-service" target="17" />
       <module name="savelife" target="17" />
       <module name="user-service" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ambulance-service" options="-parameters" />
       <module name="hospital-service" options="-parameters" />
+      <module name="request-service" options="-parameters" />
       <module name="savelife" options="-parameters" />
       <module name="user-service" options="-parameters" />
     </option>

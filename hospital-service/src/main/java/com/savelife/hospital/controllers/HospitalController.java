@@ -38,14 +38,12 @@ public class HospitalController {
     @ApiOperation(value = "Create new Hospitals")
     public ResponseEntity<SearchHospital> saveHospital(@RequestBody RegistryHospital dto){
         Hospital hospital = service.saveHospital(HospitalMapper.fromDTO(dto));
-        System.out.println(hospital.getAddress().getId());
         return new ResponseEntity<SearchHospital>(HospitalMapper.fromEntity(hospital), HttpStatus.CREATED);
     }
 
     @GetMapping
     @ApiOperation(value = "Return all registered hospitals")
     public ResponseEntity<Page<SearchHospital>> findAllHospital(@PageableDefault Pageable pageable){
-        System.out.println(service.listAllHospitals(pageable).map(HospitalMapper::fromEntity));
         return ResponseEntity.ok(service.listAllHospitals(pageable).map(HospitalMapper::fromEntity));
     }
 
@@ -62,7 +60,7 @@ public class HospitalController {
 
     @PutMapping("{id}")
     @ApiOperation(value = "Update Hospital to ID")
-    public ResponseEntity<SearchHospital> updateUser(@RequestBody RegistryHospital dto, @PathVariable Long id){
+    public ResponseEntity<SearchHospital> updateHospital(@RequestBody RegistryHospital dto, @PathVariable Long id){
         try{
             Hospital hospital = service.updateHospital(HospitalMapper.fromDTO(dto), id);
             return ResponseEntity.ok(HospitalMapper.fromEntity(hospital));

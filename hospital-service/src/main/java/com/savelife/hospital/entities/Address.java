@@ -1,24 +1,22 @@
 package com.savelife.hospital.entities;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "T_SL_ENDERECO")
-@SequenceGenerator(name = "SQ_T_ADDRESS", sequenceName = "SQ_T_ADDRESS", allocationSize = 1)
+@SequenceGenerator(name = "SQ_T_ENDERECO", sequenceName = "SQ_T_ENDERECO", allocationSize = 1)
 public class Address {
 
     @Id
     @Column(name = "CD_ENDERECO")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_T_ADDRESS")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_T_ENDERECO")
     private Long id;
 
     @Column(name = "DS_RUA")
@@ -36,8 +34,7 @@ public class Address {
     @Column(name = "DS_MUNICIPIO")
     private String city;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "CD_HOSPITAL")
+    @OneToOne(mappedBy = "address")
     private Hospital hospital;
 
     public Address() {

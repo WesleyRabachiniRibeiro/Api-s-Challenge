@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Api-s-Challenge.iml" filepath="$PROJECT_DIR$/.idea/Api-s-Challenge.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ambulance-service/ambulance-service.iml" filepath="$PROJECT_DIR$/ambulance-service/ambulance-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/hospital-service/hospital-service.iml" filepath="$PROJECT_DIR$/hospital-service/hospital-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/request-service/request-service.iml" filepath="$PROJECT_DIR$/request-service/request-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/savelife/savelife.iml" filepath="$PROJECT_DIR$/savelife/savelife.iml" />
       <module fileurl="file://$PROJECT_DIR$/user-service/user-service.iml" filepath="$PROJECT_DIR$/user-service/user-service.iml" />
     </modules>

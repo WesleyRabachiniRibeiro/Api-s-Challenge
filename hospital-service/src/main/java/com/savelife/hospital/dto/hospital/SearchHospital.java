@@ -3,8 +3,6 @@ package com.savelife.hospital.dto.hospital;
 
 import com.savelife.hospital.dto.address.SearchAddress;
 import com.savelife.hospital.dto.phone.SearchPhone;
-import com.savelife.hospital.entities.Address;
-import com.savelife.hospital.entities.Phone;
 
 import java.util.List;
 
