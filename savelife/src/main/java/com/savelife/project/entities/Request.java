@@ -1,0 +1,107 @@
+package com.savelife.project.entities;
+
+import javax.persistence.*;
+import java.time.LocalDate;
+
+@Entity
+@Table(name = "T_SL_PEDIDO")
+@SequenceGenerator(name = "SQ_T_PEDIDO", sequenceName = "SQ_T_PEDIDO", allocationSize = 1)
+public class Request {
+
+    @Id
+    @Column(name = "CD_PEDIDO")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_T_PEDIDO")
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "CD_HOSPITAL")
+    private Hospital hospital;
+
+    @ManyToOne
+    @JoinColumn(name = "CD_USUARIO")
+    private User user;
+
+    @OneToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "CD_AMBULANCIA")
+    private Ambulance ambulance;
+
+    @Column(name = "DT_DATA_DO_PEDIDO")
+    private LocalDate date;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "ST_NIVEL_DE_URGENCIA")
+    private Urgency urgency;
+
+    @Lob
+    @Column(name = "DS_CASO")
+    private String description;
+
+    public Request() {
+    }
+
+    public Request(Long id, Hospital hospital, User user, Ambulance ambulance, LocalDate date, Urgency urgency, String description) {
+        this.id = id;
+        this.hospital = hospital;
+        this.user = user;
+        this.ambulance = ambulance;
+        this.date = date;
+        this.urgency = urgency;
+        this.description = description;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Hospital getHospital() {
+        return hospital;
+    }
+
+    public void setHospital(Hospital hospital) {
+        this.hospital = hospital;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Ambulance getAmbulance() {
+        return ambulance;
+    }
+
+    public void setAmbulance(Ambulance ambulance) {
+        this.ambulance = ambulance;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public Urgency getUrgency() {
+        return urgency;
+    }
+
+    public void setUrgency(Urgency urgency) {
+        this.urgency = urgency;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+}
