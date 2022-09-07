@@ -9,11 +9,11 @@ import java.util.List;
 public class Phone {
 
     @Id
-    @Column(name = "CD_TELEFONE")
+    @Column(name = "CD_TELEFONE", length = 3, nullable = false)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_T_TELEFONE")
     private Long id;
 
-    @Column(name = "NR_TELEFONE")
+    @Column(name = "NR_TELEFONE", length = 11, nullable = false)
     private String number;
 
 

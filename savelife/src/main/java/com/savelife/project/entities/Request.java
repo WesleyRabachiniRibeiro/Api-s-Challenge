@@ -9,31 +9,31 @@ import java.time.LocalDate;
 public class Request {
 
     @Id
-    @Column(name = "CD_PEDIDO")
+    @Column(name = "CD_PEDIDO", length = 3, nullable = false)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_T_PEDIDO")
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "CD_HOSPITAL")
+    @PrimaryKeyJoinColumn(name = "CD_HOSPITAL", foreignKey = @ForeignKey(name = "FK_SL_PEDIDO_HOSPITAL"))
     private Hospital hospital;
 
     @ManyToOne
-    @JoinColumn(name = "CD_USUARIO")
+    @JoinColumn(name = "CD_USUARIO", foreignKey = @ForeignKey(name = "FK_SL_PEDIDO_USUARIO"), nullable = false)
     private User user;
 
     @OneToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "CD_AMBULANCIA")
+    @JoinColumn(name = "CD_AMBULANCIA", foreignKey = @ForeignKey(name = "FK_SL_PEDIDO_AMBULANCIA"), nullable = false)
     private Ambulance ambulance;
 
-    @Column(name = "DT_DATA_DO_PEDIDO")
+    @Column(name = "DT_DATA_DO_PEDIDO", nullable = false)
     private LocalDate date;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "ST_NIVEL_DE_URGENCIA")
+    @Column(name = "ST_NIVEL_DE_URGENCIA", length = 15, nullable = false)
     private Urgency urgency;
 
     @Lob
-    @Column(name = "DS_CASO")
+    @Column(name = "DS_CASO", nullable = false)
     private String description;
 
     public Request() {

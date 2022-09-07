@@ -1,4 +1,4 @@
-package com.savelife.project.dto.address.phone;
+package com.savelife.project.dto.phone;
 
 public class SearchPhone {
 

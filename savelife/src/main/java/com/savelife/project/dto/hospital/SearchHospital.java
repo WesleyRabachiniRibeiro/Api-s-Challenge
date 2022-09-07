@@ -3,7 +3,7 @@ package com.savelife.project.dto.hospital;
 
 import com.savelife.project.dto.ambulance.SearchAmbulance;
 import com.savelife.project.dto.address.SearchAddress;
-import com.savelife.project.dto.address.phone.SearchPhone;
+import com.savelife.project.dto.phone.SearchPhone;
 
 import java.util.List;
 

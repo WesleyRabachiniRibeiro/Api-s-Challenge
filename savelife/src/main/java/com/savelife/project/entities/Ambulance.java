@@ -9,21 +9,23 @@ import java.util.List;
 public class Ambulance {
 
     @Id
-    @Column(name = "CD_AMBULANCIA")
+    @Column(name = "CD_AMBULANCIA", length = 3, nullable = false)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_T_AMBULANCIA")
     private Long id;
 
-    @Column(name = "DS_PLACA")
+    @Column(name = "DS_PLACA", length = 7, nullable = false)
     private String licensePlate;
 
-    @Column(name = "ST_AMBULANCIA")
+    @Column(name = "ST_AMBULANCIA", length = 1, nullable = false)
     private boolean status;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "T_SL_AMBULANCIA_TELEFONE",
-            joinColumns = @JoinColumn(name = "CD_AMBULANCIA"),
-            inverseJoinColumns = @JoinColumn(name = "CD_TELEFONE"))
+            joinColumns = @JoinColumn(name = "CD_AMBULANCIA",
+                    foreignKey = @ForeignKey(name = "FK_SL_AMBULANCIA_TELEFONE")),
+            inverseJoinColumns = @JoinColumn(name = "CD_TELEFONE",
+                    foreignKey = @ForeignKey(name = "FK_SL_TELEFONE_AMBULANCIA")))
     private List<Phone> phones;
 
     @ManyToMany(cascade = CascadeType.ALL)

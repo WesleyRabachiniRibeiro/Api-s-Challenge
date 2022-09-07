@@ -15,23 +15,23 @@ import javax.persistence.Table;
 public class Address {
 
     @Id
-    @Column(name = "CD_ENDERECO")
+    @Column(name = "CD_ENDERECO", length = 3, nullable = false)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_T_ENDERECO")
     private Long id;
 
-    @Column(name = "DS_RUA")
+    @Column(name = "DS_RUA", length = 120, nullable = false)
     private String street;
 
-    @Column(name = "DS_BAIRRO")
+    @Column(name = "DS_BAIRRO", length = 120, nullable = false)
     private String district;
 
-    @Column(name = "DS_CEP")
+    @Column(name = "DS_CEP", length = 9, nullable = false)
     private String cep;
 
-    @Column(name = "DS_ESTADO")
+    @Column(name = "DS_ESTADO", length = 80, nullable = false)
     private String state;
 
-    @Column(name = "DS_MUNICIPIO")
+    @Column(name = "DS_MUNICIPIO", length = 80, nullable = false)
     private String city;
 
     @OneToOne(mappedBy = "address")

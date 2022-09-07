@@ -1,6 +1,6 @@
 package com.savelife.project.mappers;
 
-import com.savelife.project.dto.address.phone.SearchPhone;
+import com.savelife.project.dto.phone.SearchPhone;
 import com.savelife.project.entities.Phone;
 
 import java.util.ArrayList;

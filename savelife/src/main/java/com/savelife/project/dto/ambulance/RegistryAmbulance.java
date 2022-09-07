@@ -8,7 +8,6 @@ public class RegistryAmbulance {
 
     private String licensePlate;
 
-
     private List<Phone> phones;
 
     public RegistryAmbulance(String licensePlate, List<Phone> phones) {

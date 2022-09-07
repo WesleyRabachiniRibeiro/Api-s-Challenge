@@ -10,29 +10,29 @@ import java.util.List;
 public class Hospital {
 
     @Id
-    @Column(name = "CD_HOSPITAL")
+    @Column(name = "CD_HOSPITAL", length = 3, nullable = false)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_T_HOSPITAL")
     private Long id;
 
-    @Column(name = "NM_HOSPITAL")
+    @Column(name = "NM_HOSPITAL", length = 120, nullable = false)
     private String name;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "CD_ENDERECO", referencedColumnName = "CD_ENDERECO")
+    @JoinColumn(name = "CD_ENDERECO", referencedColumnName = "CD_ENDERECO", foreignKey = @ForeignKey(name = "FK_SL_HOSPITAL_ENDERECO"), nullable = false)
     private Address address;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "T_SL_HOSPITAL_TELEFONE",
-            joinColumns = @JoinColumn(name = "CD_HOSPITAL"),
-            inverseJoinColumns = @JoinColumn(name = "CD_TELEFONE"))
+            joinColumns = @JoinColumn(name = "CD_HOSPITAL", foreignKey = @ForeignKey(name = "FK_SL_HOSPITAL_TELEFONE")),
+            inverseJoinColumns = @JoinColumn(name = "CD_TELEFONE", foreignKey = @ForeignKey(name = "FK_SL_TELEFONE_HOSPITAL")))
     private List<Phone> phones;
 
     @ManyToMany
     @JoinTable(
             name = "T_SL_AMBULANCIA_HOSPITAL",
-            joinColumns = @JoinColumn(name = "CD_HOSPITAL"),
-            inverseJoinColumns = @JoinColumn(name = "CD_AMBULANCIA"))
+            joinColumns = @JoinColumn(name = "CD_HOSPITAL", foreignKey = @ForeignKey(name = "FK_SL_HOSPITAL_AMBULANCIA")),
+            inverseJoinColumns = @JoinColumn(name = "CD_AMBULANCIA", foreignKey = @ForeignKey(name = "FK_SL_AMBULANCIA_HOSPITAL")))
     private List<Ambulance> ambulances;
 
     @OneToMany(mappedBy = "hospital")

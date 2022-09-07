@@ -4,40 +4,42 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "T_SL_USUARIO")
+@Table(name = "T_SL_USUARIO",
+        uniqueConstraints = {@UniqueConstraint(name = "UN_SL_USUARIO",
+        columnNames = {"DS_EMAIL", "DS_CARTAO_SUS", "DS_CPF"})})
 @SequenceGenerator(name = "SQ_T_USUARIO", sequenceName = "SQ_T_USUARIO", allocationSize = 1)
 public class User {
 
     @Id
-    @Column(name = "CD_USUARIO")
+    @Column(name = "CD_USUARIO", length = 3, nullable = false)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_T_USUARIO")
     private Long id;
 
-    @Column(name = "NM_NOME")
+    @Column(name = "NM_NOME", length = 60, nullable = false)
     private String name;
 
-    @Column(name = "NR_IDADE")
+    @Column(name = "NR_IDADE", length = 3, nullable = false)
     private Integer age;
 
-    @Column(name = "NR_TELEFONE")
+    @Column(name = "NR_TELEFONE", length = 11, nullable = false)
     private String phone;
 
-    @Column(name = "DS_EMAIL")
+    @Column(name = "DS_EMAIL", length = 100, nullable = false)
     private String email;
 
-    @Column(name = "DS_SENHA")
+    @Column(name = "DS_SENHA", length = 30, nullable = false)
     private String password;
 
     @Column(name = "IMG_FOTO")
     private byte[] picture;
 
-    @Column(name = "DS_PLANO_DE_SAUDE")
+    @Column(name = "DS_PLANO_DE_SAUDE", length = 100)
     private String healthPlan;
 
-    @Column(name = "DS_CARTAO_SUS")
+    @Column(name = "DS_CARTAO_SUS", length = 15, nullable = false)
     private String susCard;
 
-    @Column(name = "DS_CPF")
+    @Column(name = "DS_CPF", length = 11, nullable = false)
     private String cpf;
 
     @OneToMany(mappedBy = "user")

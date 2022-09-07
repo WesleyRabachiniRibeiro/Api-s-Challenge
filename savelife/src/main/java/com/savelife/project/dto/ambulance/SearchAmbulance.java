@@ -1,6 +1,6 @@
 package com.savelife.project.dto.ambulance;
 
-import com.savelife.project.dto.address.phone.SearchPhone;
+import com.savelife.project.dto.phone.SearchPhone;
 
 import java.util.List;
 
