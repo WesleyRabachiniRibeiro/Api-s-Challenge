@@ -1,16 +1,22 @@
 package com.savelife.project.dto.request;
 
 import com.savelife.project.entities.Urgency;
+import com.sun.istack.NotNull;
+
+import javax.validation.constraints.NotBlank;
 
 
 public class RegistryRequest {
-
+    @NotNull
     private Long user;
 
+    @NotBlank
     private String hospital;
 
+    @NotNull
     private Urgency urgent;
 
+    @NotBlank
     private String description;
 
     public RegistryRequest(Long user, String hospital, Urgency urgent, String description) {

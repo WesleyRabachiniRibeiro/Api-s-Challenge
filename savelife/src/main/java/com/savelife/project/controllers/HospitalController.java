@@ -37,8 +37,12 @@ public class HospitalController {
     @PostMapping
     @ApiOperation(value = "Create new Hospitals")
     public ResponseEntity<SearchHospital> saveHospital(@RequestBody RegistryHospital dto){
-        Hospital hospital = service.saveHospital(dto);
-        return new ResponseEntity<SearchHospital>(HospitalMapper.fromEntity(hospital), HttpStatus.CREATED);
+        try {
+            Hospital hospital = service.saveHospital(dto);
+            return new ResponseEntity<SearchHospital>(HospitalMapper.fromEntity(hospital), HttpStatus.CREATED);
+        }catch (Exception ex){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
     }
 
     @GetMapping
@@ -75,7 +79,7 @@ public class HospitalController {
     public ResponseEntity<SearchHospital> deleteHospital(@PathVariable Long id){
         try{
             service.deleteHospital(id);
-            return ResponseEntity.ok().build();
+            return ResponseEntity.noContent().build();
         }catch (RuntimeException ex){
             return ResponseEntity.notFound().build();
         }

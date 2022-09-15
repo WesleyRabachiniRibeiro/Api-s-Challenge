@@ -28,21 +28,29 @@ public class Ambulance {
                     foreignKey = @ForeignKey(name = "FK_SL_TELEFONE_AMBULANCIA")))
     private List<Phone> phones;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "ambulances", cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH})
     private List<Hospital> hospitals;
 
     @OneToOne(mappedBy = "ambulance")
     private Request request;
 
+    @ManyToMany
+    @JoinTable(
+            name = "T_SL_USUARIO_AMBULANCIA",
+            joinColumns = @JoinColumn(name = "CD_USUARIO"),
+            inverseJoinColumns = @JoinColumn(name = "CD_AMBULANCE"))
+    private List<UserModel> users;
+
     public Ambulance() {
     }
 
-    public Ambulance(Long id, String licensePlate, boolean status, List<Phone> phones, List<Hospital> hospitals) {
+    public Ambulance(Long id, String licensePlate, boolean status, List<Phone> phones, List<Hospital> hospitals, Request request) {
         this.id = id;
         this.licensePlate = licensePlate;
         this.status = status;
         this.phones = phones;
         this.hospitals = hospitals;
+        this.request = request;
     }
 
     public Long getId() {
@@ -83,5 +91,21 @@ public class Ambulance {
 
     public void setHospitals(List<Hospital> hospitals) {
         this.hospitals = hospitals;
+    }
+
+    public Request getRequest() {
+        return request;
+    }
+
+    public void setRequest(Request request) {
+        this.request = request;
+    }
+
+    public List<UserModel> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<UserModel> users) {
+        this.users = users;
     }
 }

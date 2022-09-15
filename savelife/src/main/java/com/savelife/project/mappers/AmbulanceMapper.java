@@ -17,6 +17,7 @@ public class AmbulanceMapper {
                 ambulance.getLicensePlate(),
                 false,
                 ambulance.getPhones(),
+                new ArrayList<>(),
                 null
         );
     }
@@ -26,8 +27,10 @@ public class AmbulanceMapper {
         return new SearchAmbulance(
                 ambulance.getLicensePlate(),
                 ambulance.isStatus(),
-                PhoneMapper.fromListEntity(ambulance.getPhones())
+                PhoneMapper.fromListEntity(ambulance.getPhones()),
+                UserMapper.fromListEntity(ambulance.getUsers())
         );
+
     }
 
     public static SearchAmbulanceToRequest fromEntityRequest(Ambulance ambulance){
@@ -44,8 +47,9 @@ public class AmbulanceMapper {
             searchAmbulances.add(new SearchAmbulance(
                     ambulance.getLicensePlate(),
                     ambulance.isStatus(),
-                    PhoneMapper.fromListEntity(ambulance.getPhones())
-            ));
+                    PhoneMapper.fromListEntity(ambulance.getPhones()),
+                    UserMapper.fromListEntity(ambulance.getUsers()))
+            );
         });
         return searchAmbulances;
     }

@@ -19,17 +19,22 @@ import org.springframework.web.bind.annotation.*;
 @Api(value = "API REST Ambulância")
 @CrossOrigin(origins = "*")
 public class AmbulanceController {
+
     private final AmbulanceService service;
 
-    private AmbulanceController(AmbulanceService service){
+    public AmbulanceController(AmbulanceService service){
         this.service = service;
     }
 
     @PostMapping
     @ApiOperation(value = "Create new Ambulances")
     public ResponseEntity<SearchAmbulance> saveAmbulance(@RequestBody RegistryAmbulance dto){
-        Ambulance ambulance = service.saveAmbulance(AmbulanceMapper.fromDTO(dto));
-        return new ResponseEntity<SearchAmbulance>(AmbulanceMapper.fromEntity(ambulance), HttpStatus.CREATED);
+        try {
+            Ambulance ambulance = service.saveAmbulance(AmbulanceMapper.fromDTO(dto));
+            return new ResponseEntity<SearchAmbulance>(AmbulanceMapper.fromEntity(ambulance), HttpStatus.CREATED);
+        }catch (Exception ex){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
     }
 
     @GetMapping
@@ -66,7 +71,7 @@ public class AmbulanceController {
     public ResponseEntity<SearchAmbulance> deleteAmbulance(@PathVariable Long id){
         try{
             service.deleteAmbulance(id);
-            return ResponseEntity.ok().build();
+            return ResponseEntity.noContent().build();
         }catch (RuntimeException ex){
             return ResponseEntity.notFound().build();
         }

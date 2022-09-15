@@ -2,10 +2,12 @@ package com.savelife.project.dto.ambulance;
 
 import com.savelife.project.entities.Phone;
 
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 public class RegistryAmbulance {
 
+    @NotBlank
     private String licensePlate;
 
     private List<Phone> phones;

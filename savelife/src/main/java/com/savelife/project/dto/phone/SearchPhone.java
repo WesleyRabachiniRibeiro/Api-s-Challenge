@@ -1,7 +1,10 @@
 package com.savelife.project.dto.phone;
 
+import javax.validation.constraints.NotBlank;
+
 public class SearchPhone {
 
+    @NotBlank
     private String number;
 
     public SearchPhone(String number) {

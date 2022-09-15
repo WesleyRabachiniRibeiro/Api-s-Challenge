@@ -4,10 +4,12 @@ package com.savelife.project.dto.hospital;
 import com.savelife.project.entities.Address;
 import com.savelife.project.entities.Phone;
 
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 public class RegistryHospital {
 
+    @NotBlank
     private String name;
 
     private Address address;
@@ -16,14 +18,17 @@ public class RegistryHospital {
 
     private List<Long> ambulances;
 
+    private List<String> email;
+
     public RegistryHospital() {
     }
 
-    public RegistryHospital(String name, Address address, List<Phone> phones, List<Long> ambulances) {
+    public RegistryHospital(String name, Address address, List<Phone> phones, List<Long> ambulances, List<String> email) {
         this.name = name;
         this.address = address;
         this.phones = phones;
         this.ambulances = ambulances;
+        this.email = email;
     }
 
     public String getName() {
@@ -56,5 +61,13 @@ public class RegistryHospital {
 
     public void setAmbulances(List<Long> ambulances) {
         this.ambulances = ambulances;
+    }
+
+    public List<String> getEmail() {
+        return email;
+    }
+
+    public void setEmail(List<String> email) {
+        this.email = email;
     }
 }

@@ -1,33 +1,47 @@
 package com.savelife.project.dto.user;
 
+import com.savelife.project.entities.Role;
+import com.sun.istack.NotNull;
+import org.hibernate.validator.constraints.br.CPF;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
+
 
 public class RegistryUserDTO {
 
-    private Long id;
-
+    @NotBlank
     private String name;
 
+    @NotNull
     private Integer age;
 
+    @NotBlank
     private String phone;
 
+    @Email
     private String email;
 
+    @NotBlank
     private String password;
 
     private byte[] picture;
 
     private String healthPlan;
 
+    @NotBlank
     private String susCard;
 
+    @CPF
     private String cpf;
+
+    private List<Role> roles;
 
     public RegistryUserDTO() {
     }
 
-    public RegistryUserDTO(Long id, String name, Integer age, String phone, String email, String password,byte[] picture, String healthPlan, String susCard, String cpf) {
+    public RegistryUserDTO(String name, Integer age, String phone, String email, String password, byte[] picture, String healthPlan, String susCard, String cpf, List<Role> roles) {
         this.name = name;
         this.age = age;
         this.phone = phone;
@@ -37,24 +51,7 @@ public class RegistryUserDTO {
         this.healthPlan = healthPlan;
         this.susCard = susCard;
         this.cpf = cpf;
-    }
-
-    public RegistryUserDTO(Long id, String name, Integer age, String phone, String email, String password, String susCard, String cpf) {
-        this.name = name;
-        this.age = age;
-        this.phone = phone;
-        this.email = email;
-        this.password = password;
-        this.susCard = susCard;
-        this.cpf = cpf;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+        this.roles = roles;
     }
 
     public String getName() {
@@ -123,5 +120,13 @@ public class RegistryUserDTO {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }

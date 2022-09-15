@@ -1,5 +1,6 @@
 package com.savelife.project.entities;
 
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -7,7 +8,7 @@ import java.util.List;
 @Entity
 @Table(name = "T_SL_HOSPITAL")
 @SequenceGenerator(name = "SQ_T_HOSPITAL", sequenceName = "SQ_T_HOSPITAL", allocationSize = 1)
-public class Hospital {
+public class Hospital{
 
     @Id
     @Column(name = "CD_HOSPITAL", length = 3, nullable = false)
@@ -28,25 +29,34 @@ public class Hospital {
             inverseJoinColumns = @JoinColumn(name = "CD_TELEFONE", foreignKey = @ForeignKey(name = "FK_SL_TELEFONE_HOSPITAL")))
     private List<Phone> phones;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.REFRESH, CascadeType.MERGE,CascadeType.REFRESH, CascadeType.DETACH})
     @JoinTable(
             name = "T_SL_AMBULANCIA_HOSPITAL",
             joinColumns = @JoinColumn(name = "CD_HOSPITAL", foreignKey = @ForeignKey(name = "FK_SL_HOSPITAL_AMBULANCIA")),
             inverseJoinColumns = @JoinColumn(name = "CD_AMBULANCIA", foreignKey = @ForeignKey(name = "FK_SL_AMBULANCIA_HOSPITAL")))
     private List<Ambulance> ambulances;
 
-    @OneToMany(mappedBy = "hospital")
+    @OneToMany(mappedBy = "hospital", cascade = CascadeType.REFRESH)
     private List<Request> requests;
+
+    @ManyToMany
+    @JoinTable(
+            name = "T_SL_USUARIO_HOSPITAL",
+            joinColumns = @JoinColumn(name = "CD_USUARIO"),
+            inverseJoinColumns = @JoinColumn(name = "CD_HOSPITAL"))
+    private List<UserModel> users;
 
     public Hospital() {
     }
 
-    public Hospital(Long id, String name, Address address, List<Phone> phones, List<Ambulance> ambulances) {
+    public Hospital(Long id, String name, Address address, List<Phone> phones, List<Ambulance> ambulances, List<Request> requests, List<UserModel> users) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.phones = phones;
         this.ambulances = ambulances;
+        this.requests = requests;
+        this.users = users;
     }
 
     public Long getId() {
@@ -87,5 +97,21 @@ public class Hospital {
 
     public void setAmbulances(List<Ambulance> ambulances) {
         this.ambulances = ambulances;
+    }
+
+    public List<Request> getRequests() {
+        return requests;
+    }
+
+    public void setRequests(List<Request> requests) {
+        this.requests = requests;
+    }
+
+    public List<UserModel> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<UserModel> users) {
+        this.users = users;
     }
 }

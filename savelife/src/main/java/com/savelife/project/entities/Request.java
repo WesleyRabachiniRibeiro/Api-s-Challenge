@@ -19,7 +19,7 @@ public class Request {
 
     @ManyToOne
     @JoinColumn(name = "CD_USUARIO", foreignKey = @ForeignKey(name = "FK_SL_PEDIDO_USUARIO"), nullable = false)
-    private User user;
+    private UserModel user;
 
     @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "CD_AMBULANCIA", foreignKey = @ForeignKey(name = "FK_SL_PEDIDO_AMBULANCIA"), nullable = false)
@@ -39,7 +39,7 @@ public class Request {
     public Request() {
     }
 
-    public Request(Long id, Hospital hospital, User user, Ambulance ambulance, LocalDate date, Urgency urgency, String description) {
+    public Request(Long id, Hospital hospital, UserModel user, Ambulance ambulance, LocalDate date, Urgency urgency, String description) {
         this.id = id;
         this.hospital = hospital;
         this.user = user;
@@ -65,11 +65,11 @@ public class Request {
         this.hospital = hospital;
     }
 
-    public User getUser() {
+    public UserModel getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserModel user) {
         this.user = user;
     }
 

@@ -23,15 +23,19 @@ public class RequestController {
 
     private final RequestService service;
 
-    private RequestController(RequestService service){
+    public RequestController(RequestService service){
         this.service = service;
     }
 
     @PostMapping
     @ApiOperation(value = "Create new Requests")
     public ResponseEntity<SearchRequest> saveRequest(@RequestBody RegistryRequest dto){
-        Request request = service.saveRequest(dto);
-        return new ResponseEntity<SearchRequest>(RequestMapper.fromEntity(request), HttpStatus.CREATED);
+        try{
+            Request request = service.saveRequest(dto);
+            return new ResponseEntity<SearchRequest>(RequestMapper.fromEntity(request), HttpStatus.CREATED);
+        }catch (Exception ex){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
     }
 
     @GetMapping
@@ -68,7 +72,7 @@ public class RequestController {
     public ResponseEntity<SearchRequest> deleteRequest(@PathVariable Long id){
         try{
             service.deleteRequest(id);
-            return ResponseEntity.ok().build();
+            return ResponseEntity.noContent().build();
         }catch (RuntimeException ex){
             return ResponseEntity.notFound().build();
         }

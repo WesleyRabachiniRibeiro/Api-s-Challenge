@@ -1,6 +1,10 @@
 package com.savelife.project.entities;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -8,7 +12,7 @@ import java.util.List;
         uniqueConstraints = {@UniqueConstraint(name = "UN_SL_USUARIO",
         columnNames = {"DS_EMAIL", "DS_CARTAO_SUS", "DS_CPF"})})
 @SequenceGenerator(name = "SQ_T_USUARIO", sequenceName = "SQ_T_USUARIO", allocationSize = 1)
-public class User {
+public class UserModel implements UserDetails {
 
     @Id
     @Column(name = "CD_USUARIO", length = 3, nullable = false)
@@ -27,7 +31,7 @@ public class User {
     @Column(name = "DS_EMAIL", length = 100, nullable = false)
     private String email;
 
-    @Column(name = "DS_SENHA", length = 30, nullable = false)
+    @Column(name = "DS_SENHA", length = 60, nullable = false)
     private String password;
 
     @Column(name = "IMG_FOTO")
@@ -45,7 +49,22 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Request> request;
 
-    public User(Long id, String name, Integer age, String phone, String email, String password ,byte[] picture, String healthPlan, String susCard, String cpf) {
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH})
+    @JoinTable(
+            name = "T_SL_USUARIO_FUNCAO",
+            joinColumns = @JoinColumn(name = "CD_USUARIO"),
+            inverseJoinColumns = @JoinColumn(name = "CD_FUNCAO"))
+    private List<Role> roles;
+
+
+    @ManyToMany(mappedBy = "users")
+    private List<Ambulance> ambulance;
+
+    @ManyToMany(mappedBy = "users")
+    private List<Hospital> hospital;
+
+
+    public UserModel(Long id, String name, Integer age, String phone, String email, String password, byte[] picture, String healthPlan, String susCard, String cpf, List<Role> roles) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -56,20 +75,10 @@ public class User {
         this.healthPlan = healthPlan;
         this.susCard = susCard;
         this.cpf = cpf;
+        this.roles = roles;
     }
 
-    public User(Long id, String name, Integer age, String phone, String email, String password, String susCard, String cpf) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.phone = phone;
-        this.email = email;
-        this.password = password;
-        this.susCard = susCard;
-        this.cpf = cpf;
-    }
-
-    public User() {
+    public UserModel() {
     }
 
     public Long getId() {
@@ -143,4 +152,66 @@ public class User {
     public String getCpf() { return cpf; }
 
     public void setCpf(String cpf) { this.cpf = cpf; }
+
+    public List<Request> getRequest() {
+        return request;
+    }
+
+    public void setRequest(List<Request> request) {
+        this.request = request;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    public List<Ambulance> getAmbulance() {
+        return ambulance;
+    }
+
+    public void setAmbulance(List<Ambulance> ambulance) {
+        this.ambulance = ambulance;
+    }
+
+    public List<Hospital> getHospital() {
+        return hospital;
+    }
+
+    public void setHospital(List<Hospital> hospital) {
+        this.hospital = hospital;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return this.roles;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }

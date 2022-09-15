@@ -4,6 +4,8 @@ import com.savelife.project.dto.hospital.RegistryHospital;
 import com.savelife.project.dto.hospital.SearchHospital;
 import com.savelife.project.entities.Hospital;
 
+import java.util.ArrayList;
+
 public class HospitalMapper {
 
     public static Hospital fromDTO(RegistryHospital hospital){
@@ -12,7 +14,9 @@ public class HospitalMapper {
                 hospital.getName(),
                 hospital.getAddress(),
                 hospital.getPhones(),
-                null
+                new ArrayList<>(),
+                null,
+                new ArrayList<>()
         );
     }
 
