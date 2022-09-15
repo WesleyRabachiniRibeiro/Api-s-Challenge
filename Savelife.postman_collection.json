@@ -1,0 +1,783 @@
+{
+	"info": {
+		"_postman_id": "938092b8-130f-4a6e-a72d-137024001c83",
+		"name": "Savelife",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18426872"
+	},
+	"item": [
+		{
+			"name": "Pedido",
+			"item": [
+				{
+					"name": "Search all Request",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "administrador",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@savelife.com.br",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/v1/request/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"request",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search a Request",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "administrador",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@savelife.com.br",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/v1/request/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"request",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a Request",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "administrador",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@savelife.com.br",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\" : 1,\r\n    \"hospital\" : \"R. Conselheiro Brotero 1486\",\r\n    \"urgent\" : \"ALTA\",\r\n    \"description\" : \"Olá tudo bem, como vc estáw\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/request/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"request",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Request",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "administrador",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@savelife.com.br",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\" : \"Olá tudo bem, como vc está ?\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/request/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"request",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Request",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "administrador",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@savelife.com.br",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/v1/request/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"request",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuário",
+			"item": [
+				{
+					"name": "One User",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "administrador",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@savelife.com.br",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/v1/user/1",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"v1",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Users",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "administrador",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@savelife.com.br",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/v1/user/",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"v1",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create user",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"wesley\",\r\n    \"age\" : 20,\r\n    \"phone\" : \"11960713267\",\r\n    \"email\" : \"wesley@gmail.com\",\r\n    \"password\" : \"125545678\",\r\n    \"susCard\" : \"890000085664482\",\r\n    \"cpf\" : \"09087244700\",\r\n    \"roles\" : [\r\n        {\r\n        \"name\" : \"ROLE_USER\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/v1/user/",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"v1",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "administrador",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@savelife.com.br",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"admin\",\r\n    \"age\" : 20,\r\n    \"phone\" : \"11960713267\",\r\n    \"email\" : \"admin@savelife.com.br\",\r\n    \"password\" : \"administrador\",\r\n    \"susCard\" : \"890000085664482\",\r\n    \"cpf\" : \"09087244705\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/v1/user/1",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"v1",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "administrador",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@savelife.com.br",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/v1/user/5",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"v1",
+								"user",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hospital",
+			"item": [
+				{
+					"name": "Search all Hospital",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "administrador",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@savelife.com.br",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/v1/hospital",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"hospital"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search a Hospital",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "administrador",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@savelife.com.br",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/v1/hospital/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"hospital",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a Hospital",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "administrador",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@savelife.com.br",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Hospital Alemão Oswaldo Cruz\",\r\n    \"address\" : {\r\n        \"street\" : \"R. Treze de Maio 1815\",\r\n        \"district\" : \"Bela Vista\",\r\n        \"cep\" : \"01323020\",\r\n        \"state\" : \"São Paulo\",\r\n        \"city\" : \"São Paulo\"\r\n    },\r\n    \"phones\" : [\r\n        {\r\n            \"number\" : \"11962019712\"\r\n        },\r\n        {\r\n            \"number\" : \"11962013213\"\r\n        }\r\n    ],\r\n    \"ambulances\" : [\r\n        1,2\r\n    ],\r\n    \"email\" : [\r\n        \"albert@savelife.com.br\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/hospital/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"hospital",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Hospital",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "administrador",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@savelife.com.br",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Hospital Alemão Oswaldo Cruz\",\r\n    \"address\" : {\r\n        \"street\" : \"R. Treze de Maio 1815\",\r\n        \"district\" : \"Bela Vista\",\r\n        \"cep\" : \"01323020\",\r\n        \"state\" : \"São Paulo\",\r\n        \"city\" : \"São Paulo\"\r\n    },\r\n    \"phones\" : [\r\n        {\r\n            \"number\" : \"11962019712\"\r\n        },\r\n        {\r\n            \"number\" : \"11962013213\"\r\n        }\r\n    ],\r\n    \"ambulances\" : [\r\n        1\r\n    ],\r\n    \"email\" : [\r\n        \"albert@savelife.com.br\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/hospital/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"hospital",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Hospital",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "administrador",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@savelife.com.br",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/v1/hospital/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"hospital",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ambulance",
+			"item": [
+				{
+					"name": "Search all Ambulance",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "administrador",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@savelife.com.br",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/v1/ambulance",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"ambulance"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search a Ambulance",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "administrador",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@savelife.com.br",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/v1/ambulance/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"ambulance",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a Ambulance",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "administrador",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@savelife.com.br",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"licensePlate\" : \"FJH3245\",\r\n    \"phones\" : \r\n        [\r\n            {\r\n                \"number\" : \"11962019712\"\r\n            },\r\n            {\r\n                \"number\" : \"11962019712\"\r\n            }\r\n        ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/ambulance/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"ambulance",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Ambulance",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "administrador",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@savelife.com.br",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"licensePlate\" : \"AHG6543\",\r\n    \"phones\" : \r\n        [\r\n            {\r\n                \"number\" : \"11962019712\"\r\n            },\r\n            {\r\n                \"number\" : \"11962019712\"\r\n            }\r\n        ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/ambulance/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"ambulance",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Ambulance",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "administrador",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@savelife.com.br",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/v1/ambulance/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"ambulance",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
