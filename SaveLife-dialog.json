@@ -1,0 +1,1230 @@
+{
+  "intents": [
+    {
+      "intent": "attendant",
+      "examples": [
+        {
+          "text": "deixe-me falar com um atendente"
+        },
+        {
+          "text": "eu gostaria de falar com um atendente"
+        },
+        {
+          "text": "eu preciso falar com um atendente"
+        },
+        {
+          "text": "eu quero falar com um atendente"
+        },
+        {
+          "text": "me passa para um atendente"
+        },
+        {
+          "text": "necessito de ajuda de um atendente"
+        },
+        {
+          "text": "preciso falar com um atendente"
+        },
+        {
+          "text": "quero atendimento humano"
+        },
+        {
+          "text": "quero falar com um atendente"
+        },
+        {
+          "text": "quero falar com um humano"
+        }
+      ],
+      "description": "Intenção para falar com um atendente"
+    },
+    {
+      "intent": "good_bye",
+      "examples": [
+        {
+          "text": "agradecido pela ajuda"
+        },
+        {
+          "text": "agradeço a ajuda"
+        },
+        {
+          "text": "até logo"
+        },
+        {
+          "text": "muito obrigado"
+        },
+        {
+          "text": "Obrigado, até mais"
+        },
+        {
+          "text": "tchau"
+        }
+      ],
+      "description": "Intenção de despedida"
+    },
+    {
+      "intent": "need_ambulance",
+      "examples": [
+        {
+          "text": "adoraria uma ambulância"
+        },
+        {
+          "text": "gostaria de uma ambulância"
+        },
+        {
+          "text": "necessito de uma ambulância"
+        },
+        {
+          "text": "pode me enviar uma ambulância?"
+        },
+        {
+          "text": "preciso de uma ambulância"
+        },
+        {
+          "text": "queria requisitar uma ambulância"
+        },
+        {
+          "text": "queria uma ambulância"
+        },
+        {
+          "text": "quero uma ambulância"
+        },
+        {
+          "text": "tenho necessidade de uma ambulância"
+        },
+        {
+          "text": "você pode me enviar uma ambulância?"
+        }
+      ],
+      "description": "intenção para quando a pessoa só quer uma ambulância"
+    },
+    {
+      "intent": "not_allow",
+      "examples": [
+        {
+          "text": "Eu quero uma ambulância para ir no médico"
+        },
+        {
+          "text": "preciso de ambulância para ir na consulta marcada"
+        },
+        {
+          "text": "preciso de uma ambulância para ir no médico realizar um exame"
+        },
+        {
+          "text": "preciso de uma ambulância para ir pra hospital"
+        },
+        {
+          "text": "preciso ir em uma consulta no médico"
+        },
+        {
+          "text": "preciso ir no médico realizar um exame"
+        },
+        {
+          "text": "quero uma ambulância para ir pra casa"
+        },
+        {
+          "text": "solicito uma ambulância para ir no hospital 13 de maio"
+        },
+        {
+          "text": "tenho que ir em uma consulta"
+        },
+        {
+          "text": "tenho uma consulta marcada para ir no médico"
+        }
+      ],
+      "description": "pedidos que não são permitidos"
+    },
+    {
+      "intent": "urgent",
+      "examples": [
+        {
+          "text": "A menina @problems:(corte) o braço"
+        },
+        {
+          "text": "A @no_problems:(crônica) de minha filha está atacada"
+        },
+        {
+          "text": "a @no_problems:(crônica) está atacada"
+        },
+        {
+          "text": "A @problems:(febre) não passa a mais de dois dias"
+        },
+        {
+          "text": "estou sentindo uma @problems:(cardiaco)"
+        },
+        {
+          "text": "eu fui @problems:(picado) por uma aranha"
+        },
+        {
+          "text": "eu me @problems:(corte) com a faca"
+        },
+        {
+          "text": "eu me @problems:(eletrocutou)"
+        },
+        {
+          "text": "eu me @problems:(fogo)"
+        },
+        {
+          "text": "eu @problems:(fogo) meu braço inteiro"
+        },
+        {
+          "text": "eu tentei me @problems:(suicidio)"
+        },
+        {
+          "text": "me @problems:(corte) com uma faca"
+        },
+        {
+          "text": "meu amigo está com crise de @problems:(pânico)"
+        },
+        {
+          "text": "meu amigo @problems:(torceu)o tornozelo"
+        },
+        {
+          "text": "meu avô está tendo um @problems:(derrame)"
+        },
+        {
+          "text": "meu avô não consegue @problems:(mija)"
+        },
+        {
+          "text": "meu filho está com o pé @problems:(torceu)"
+        },
+        {
+          "text": "meu marido @problems:(suicido) e não está sentindo as pernas"
+        },
+        {
+          "text": "meu padrasto foi @problems:(eletrocutou)"
+        },
+        {
+          "text": "meu pai tá tendo um @problems:(cardiaco)"
+        },
+        {
+          "text": "meu @problems:(crônico) está alto necessito de ambulância"
+        },
+        {
+          "text": "meu tio está @problems:(convulsão)"
+        },
+        {
+          "text": "minha avó não se @problems:(lembra) mais de mim"
+        },
+        {
+          "text": "minha avó @problems:(quebrado) a perna"
+        },
+        {
+          "text": "minha avó @problems:(torceu) o ombro"
+        },
+        {
+          "text": "minha esposa está @problems:(parto)"
+        },
+        {
+          "text": "minha irmã está com crise de ansiedade"
+        },
+        {
+          "text": "minha @no_problems:(crônica) está alta"
+        },
+        {
+          "text": "minha tia está com falta de @problems:(ar)"
+        },
+        {
+          "text": "Na rua a frente de casa houve um @problems:(acidente) de trânsito"
+        },
+        {
+          "text": "ocorreu um @problems:(eletrocutou) o perto de casa"
+        },
+        {
+          "text": "O garoto cometeu @problems:(convulsão)"
+        },
+        {
+          "text": "O malabarista se @problems:(fogo) com as labaredas das facas"
+        },
+        {
+          "text": "O meu genro tomou um @problems:(tiro)"
+        },
+        {
+          "text": "O moço está @problems:(sangue)"
+        },
+        {
+          "text": "O moleque se @problems:(fogo) inteiro"
+        },
+        {
+          "text": "o senhor foi baleado por @problems:(tiro)"
+        },
+        {
+          "text": "Socorro meu marido esta com o braço @problems:(quebrado)"
+        },
+        {
+          "text": "Uma criança @problems:(suicidio) da janela do segundo andar"
+        },
+        {
+          "text": "um cachorro atacou um homem e ele está @problems:(sangue) muito"
+        }
+      ],
+      "description": "Identificar situações urgente"
+    },
+    {
+      "intent": "welcome",
+      "examples": [
+        {
+          "text": "Boa noite"
+        },
+        {
+          "text": "Boa tarde"
+        },
+        {
+          "text": "Bom dia"
+        },
+        {
+          "text": "Como vai você?"
+        },
+        {
+          "text": "Como você está?"
+        },
+        {
+          "text": "eae, beleza?"
+        },
+        {
+          "text": "e ai?"
+        },
+        {
+          "text": "oi"
+        },
+        {
+          "text": "oii, você pode me ajudar?"
+        },
+        {
+          "text": "Olá, tudo bem?"
+        },
+        {
+          "text": "tranquilidade?"
+        }
+      ],
+      "description": "intenção de saudação ao usuário"
+    }
+  ],
+  "entities": [
+    {
+      "entity": "no",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "não",
+          "synonyms": [
+            "n",
+            "nada",
+            "neca",
+            "negativo",
+            "népia",
+            "nicles",
+            "nn"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "no_problems",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "cronica",
+          "synonyms": [
+            "asma",
+            "bronquite",
+            "câncer",
+            "cólica",
+            "diabetes",
+            "fibrose cística",
+            "obesidade",
+            "osteoporose ",
+            "rinite",
+            "sinusite"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "dente",
+          "synonyms": [
+            "siso"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "diarréia",
+          "synonyms": [
+            "bosta",
+            "caganeira",
+            "cocô",
+            "merda"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "febre",
+          "synonyms": [
+            "febrio",
+            "hipertermia",
+            "pirexia",
+            "temperatura"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "gripe",
+          "synonyms": [
+            "defluxo",
+            "gripado",
+            "influenza",
+            "resfriado",
+            "resfriamento"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "machucou",
+          "synonyms": [
+            "açoitado",
+            "açoitar",
+            "arranhou",
+            "bateu",
+            "ferir",
+            "feriu",
+            "golpeado",
+            "golpear",
+            "golpeou",
+            "lesionar",
+            "machucado"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "memória",
+          "synonyms": [
+            "lembrança",
+            "lembranças",
+            "memórias"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "morreu",
+          "synonyms": [
+            "morto"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "sonda",
+          "synonyms": [
+            "aparelho"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "vômito",
+          "synonyms": [
+            "golfo",
+            "golfou",
+            "vomitando",
+            "vomitou"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "problems",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "acidente",
+          "synonyms": [
+            "batida",
+            "capotou",
+            "incidente"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "afogamento",
+          "synonyms": [
+            "afogou",
+            "afogou-se",
+            "imergir",
+            "mergulhar",
+            "mergulhou",
+            "submergir"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "ansiendade",
+          "synonyms": [
+            "crise de ansiedade"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "ar",
+          "synonyms": [
+            "fôlego",
+            "respirando",
+            "respirar",
+            "respirou",
+            "sufocar",
+            "sufogando"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "cardiaco",
+          "synonyms": [
+            "coração",
+            "dor no peito",
+            "infartando",
+            "infarte",
+            "infarto ",
+            "infartou"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "convulsão",
+          "synonyms": [
+            "contração",
+            "espamo",
+            "tremendo",
+            "tremor"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "corte",
+          "synonyms": [
+            "amputação",
+            "amputado",
+            "amputei",
+            "cortado",
+            "cortei",
+            "cortou",
+            "decapitado",
+            "ferida",
+            "ferimento",
+            "fissura",
+            "fissurei",
+            "lesão",
+            "lesionei",
+            "mutilado"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "derrame",
+          "synonyms": [
+            "acidente vascular encefálico",
+            "avc",
+            "desmaiado",
+            "desmaiou",
+            "forte dor de cabeça"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "eletrocutou",
+          "synonyms": [
+            "centelha",
+            "corrente elétrica",
+            "descarga elétrica",
+            "eletrocutar",
+            "raio",
+            "relâmpago",
+            "shock",
+            "trovão"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "infarto",
+          "synonyms": [
+            "dor no peito",
+            "enfartando",
+            "enfarte",
+            "enfarto",
+            "infartando"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "mijo",
+          "synonyms": [
+            "chichi",
+            "mijar",
+            "mijou",
+            "urina",
+            "urinar",
+            "urinou",
+            "xixi"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "pânico",
+          "synonyms": [
+            "ataque de pânico"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "parto",
+          "synonyms": [
+            "bebê nascendo",
+            "dando a luz",
+            "tendo filho"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "picado",
+          "synonyms": [
+            "abocanhado",
+            "arranhado por",
+            "mordido"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "quebrado",
+          "synonyms": [
+            "fraturado",
+            "fraturei",
+            "fraturou",
+            "quebrei",
+            "quebrou"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "queimou",
+          "synonyms": [
+            "brasa",
+            "calor",
+            "chama",
+            "combustão",
+            "fogão",
+            "fogaréu",
+            "fogo",
+            "fogueira",
+            "labareda",
+            "pirotecnia",
+            "queima",
+            "queimado",
+            "tocha"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "sangrando",
+          "synonyms": [
+            "hemoragia",
+            "hemoragico",
+            "sangramento",
+            "sangrando",
+            "sangue"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "suicidio",
+          "synonyms": [
+            "autocídio",
+            "autodestruição",
+            "autoextermínio",
+            "autoquíria",
+            "caiu",
+            "jogou-se",
+            "matou-se"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "tiro",
+          "synonyms": [
+            "atiraram",
+            "atirou",
+            "bala",
+            "baleado"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "torceu",
+          "synonyms": [
+            "deslocou",
+            "distendeu",
+            "lesionou",
+            "luxou",
+            "torcido"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "veneno",
+          "synonyms": [
+            "envenenamento",
+            "intoxicação",
+            "peçonha",
+            "peçonhento"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "yes",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "sim",
+          "synonyms": [
+            "afirmativo",
+            "certo",
+            "claro",
+            "com certeza",
+            "de acordo",
+            "efetivamente",
+            "está bem",
+            "está certo",
+            "isso",
+            "ok",
+            "positivo",
+            "quero",
+            "s",
+            "ss"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "webhooks": [
+    {
+      "url": "",
+      "name": "main_webhook",
+      "headers": []
+    }
+  ],
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Bem-vindo",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Olá! Me chamo Alice e estou aqui para te auxiliar. O que aconteceu?"
+              },
+              {
+                "text": "Bem vindo ao Atendimento Savelife, O que aconteceu?"
+              },
+              {
+                "text": "Boas Vindas ao nosso atendimento! O que aconteceu?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#welcome || welcome",
+      "digress_in": "does_not_return",
+      "dialog_node": "Bem-vindo"
+    },
+    {
+      "type": "standard",
+      "title": "Em outros casos",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Eu não entendi. Você pode tentar reformular a frase."
+              },
+              {
+                "text": "Você pode reformular sua afirmação? Eu não estou entendendo."
+              },
+              {
+                "text": "Eu não entendi o sentido."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Em outros casos",
+      "previous_sibling": "node_10_1662231117549",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_7_1663107864900",
+      "context": {
+        "problems_sangrando": "@problems:sangrando"
+      },
+      "conditions": "@problems:sangrando",
+      "event_name": "input",
+      "dialog_node": "handler_10_1663107864923"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_7_1663107864900",
+      "event_name": "focus",
+      "dialog_node": "handler_1_1663107864923",
+      "previous_sibling": "handler_10_1663107864923"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_7_1662230561351",
+      "event_name": "focus",
+      "dialog_node": "handler_3_1662230561365",
+      "previous_sibling": "handler_7_1662230561365"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_7_1662230561351",
+      "event_name": "input",
+      "dialog_node": "handler_7_1662230561365"
+    },
+    {
+      "type": "standard",
+      "title": "Socorro",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Respire fundo e conte para mim o que aconteceu, enquanto isso iremos fazer a requisição de sua ambulância"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1662308083627",
+      "context": {},
+      "conditions": "#urgent || @problems",
+      "dialog_node": "node_10_1662141093254",
+      "previous_sibling": "node_5_1662320762290"
+    },
+    {
+      "type": "standard",
+      "title": "atendimento?",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Ajudo em algo mais?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1662231117549",
+      "metadata": {
+        "_customization": {
+          "mcr": false
+        }
+      },
+      "conditions": "",
+      "dialog_node": "node_10_1662230508345"
+    },
+    {
+      "type": "standard",
+      "parent": "node_10_1662230508345",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_6_1662231157759"
+      },
+      "conditions": "@yes",
+      "dialog_node": "node_10_1662230624012"
+    },
+    {
+      "type": "folder",
+      "title": "Finalizar ou Continuar Atendimento",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_10_1662231117549",
+      "previous_sibling": "node_5_1662334427067"
+    },
+    {
+      "type": "standard",
+      "title": "Confirmação",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Ok, a ambulância já foi enviada"
+              },
+              {
+                "text": "Estarei dando dicas de primeiros socorros para seu problema"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_10_1662141093254",
+      "context": {
+        "level": "",
+        "problem": "<? input.text?>"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_9_1662661083940"
+      },
+      "conditions": "true",
+      "dialog_node": "node_2_1662141213552"
+    },
+    {
+      "type": "folder",
+      "title": "Atendimento",
+      "dialog_node": "node_2_1662308083627",
+      "previous_sibling": "Bem-vindo"
+    },
+    {
+      "type": "standard",
+      "title": "Não necessita de Ambulância",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Desculpe, mas não posso solicitar uma ambulância para esse tipo de situação"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1662308083627",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_10_1662230508345"
+      },
+      "conditions": "@no_problems || #not_allow",
+      "dialog_node": "node_3_1662230418804",
+      "previous_sibling": "node_5_1662152994334"
+    },
+    {
+      "type": "standard",
+      "title": "Atendente",
+      "output": {
+        "generic": [
+          {
+            "response_type": "channel_transfer",
+            "transfer_info": {
+              "target": {
+                "chat": {
+                  "url": ""
+                }
+              }
+            },
+            "message_to_user": "OK, click this link for additional help. Chat will continue on a new web page."
+          }
+        ]
+      },
+      "parent": "node_2_1662308083627",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_10_1662230508345"
+      },
+      "conditions": "#attendant",
+      "dialog_node": "node_5_1662152994334",
+      "previous_sibling": "node_10_1662141093254"
+    },
+    {
+      "type": "standard",
+      "title": "Precisa Ambulância",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Para quê você necessita de uma ambulância?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1662308083627",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "user_input",
+        "dialog_node": "node_3_1662230418804"
+      },
+      "conditions": "#need_ambulance",
+      "dialog_node": "node_5_1662320762290"
+    },
+    {
+      "type": "folder",
+      "title": "Primeiros Socorros",
+      "conditions": "",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_5_1662334427067",
+      "previous_sibling": "node_2_1662308083627"
+    },
+    {
+      "type": "standard",
+      "title": "Continuar atendimento",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Me conte o que aconteceu"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1662231117549",
+      "dialog_node": "node_6_1662231157759",
+      "previous_sibling": "node_7_1662230961167"
+    },
+    {
+      "type": "standard",
+      "title": "Tchau",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Eu e a Savelife agradecemos pela escolha do atendimento"
+              },
+              {
+                "text": "A Savelife agradece a escolha de seu atendimento"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "parent": "node_10_1662231117549",
+      "dialog_node": "node_7_1662230961167",
+      "previous_sibling": "node_10_1662230508345"
+    },
+    {
+      "type": "standard",
+      "parent": "node_10_1662230508345",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_7_1662230961167"
+      },
+      "conditions": "@no",
+      "dialog_node": "node_9_1662230627213",
+      "previous_sibling": "node_10_1662230624012"
+    },
+    {
+      "type": "standard",
+      "title": "Primeiros Socorros",
+      "parent": "node_5_1662334427067",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_10_1662230508345"
+      },
+      "conditions": "",
+      "dialog_node": "node_9_1662661083940"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Respire fundo e calmamente, contando até 5 ao inspirar ou expirar."
+              },
+              {
+                "text": "Desaperte as roupas e acessórios mais apertados, como cintos ou camisas"
+              },
+              {
+                "text": "Se nunca teve problema cardíaco e não tiver alergia a aspirina tome"
+              },
+              {
+                "text": "Monitore os batimentos e respiração até a equipe médica chegar"
+              },
+              {
+                "text": "Se a pessoa desmaiar continue o monitoramento e mantenha a pessoa deitada de forma confortável com a barriga pra cima ou pro lado"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_9_1662661083940",
+      "conditions": "@problems:cardiaco || @problems:infarto",
+      "dialog_node": "response_3_1662662203614"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Ajudo em algo mais?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1662230508345",
+      "disabled": true,
+      "dialog_node": "response_6_1662230550837",
+      "previous_sibling": "slot_7_1662230561351"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Saia de perto de fontes de calor"
+              },
+              {
+                "text": "Se o dano for leve, recomenda-se lavar o local com água corrente ou colocar compressas de soro fisiológico para reduzir a temperatura do local"
+              },
+              {
+                "text": "Caso apareçam bolhas, elas nunca devem ser furadas"
+              },
+              {
+                "text": "É importante não utilizar substâncias caseiras"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1662661083940",
+      "conditions": "@problems:queimou",
+      "dialog_node": "response_6_1662662259610",
+      "previous_sibling": "response_3_1662662203614"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Lave a área da picada ou mordida com água e sabão"
+              },
+              {
+                "text": "Não aplique qualquer substância, não faça cortes no local e nem amarrar ou fazer torniquetes"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_9_1662661083940",
+      "conditions": "@problems:picado",
+      "dialog_node": "response_7_1662662561353",
+      "previous_sibling": "response_9_1662662324869"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Em caso de pescoço ou costas espere a equipe médica chegar"
+              },
+              {
+                "text": "Primeiramente deve imobilizar a região acometida para evitar a movimentação dos fragmentos dos ossos lesionados."
+              },
+              {
+                "text": "Em caso de fraturas expostas, é necessário tentar controlar, caso esteja presente, a hemorragia com um pano limpo que deve ser colocado sobre o local e pressionado"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_9_1662661083940",
+      "conditions": "@problems:torceu",
+      "dialog_node": "response_9_1662662324869",
+      "previous_sibling": "response_6_1662662259610"
+    },
+    {
+      "type": "slot",
+      "parent": "node_10_1662230508345",
+      "dialog_node": "slot_7_1662230561351",
+      "previous_sibling": "node_9_1662230627213"
+    },
+    {
+      "type": "slot",
+      "parent": "node_2_1662141213552",
+      "variable": "$problems_sangrando",
+      "dialog_node": "slot_7_1663107864900"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "disambiguation": {
+      "prompt": "Você quis dizer:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "Nenhuma das anteriores"
+    },
+    "human_agent_assist": {
+      "prompt": "Você quis dizer:"
+    },
+    "intent_classification": {
+      "training_backend_version": "v2"
+    }
+  },
+  "learning_opt_out": false,
+  "name": "SaveLife",
+  "language": "pt-br",
+  "description": "Bot SaveLife"
+}
