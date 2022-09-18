@@ -81,3 +81,32 @@ Após apertar o botão, selecione a pasta do projeto
 
 **Clique em Try It e divirta-se com o Bot**
 ![Try it](./img/chatbot/tente.png)
+
+### React Native
+
+**Abre a pasta React**
+![](./img/react/paste.png)
+
+**E em seguida a pasta savelifeproject**
+![](./img/react/reactPaste.png)
+
+**Seleciona a Aba Terminal**
+![](./img/react/terminal.png)
+
+**Abre um novo terminal**
+![](./img/react/newTerminal.png)
+
+**Escreva npm install**
+![](./img/react/install.png)
+
+**Após terminar as instalações escreva expo start**
+![](./img/react/start.png)
+
+**Aperte W para abrir no navegador**
+![](./img/react/open.png)
+
+**Depois botão direito e inspecionar elemento**
+![](./img/react/inspetor.png)
+
+**O app está pronto para ser usado**
+![](./img/react/played.png)
