@@ -1,7 +1,9 @@
 package com.savelife.project.controllers;
 
+import com.savelife.project.dto.user.RegistryEmail;
 import com.savelife.project.dto.user.RegistryUserDTO;
 import com.savelife.project.dto.user.SearchUserDTO;
+import com.savelife.project.dto.user.SearchUserEmail;
 import com.savelife.project.mappers.UserMapper;
 import com.savelife.project.entities.UserModel;
 import com.savelife.project.services.UserService;
@@ -45,6 +47,17 @@ public class UserController {
             return new ResponseEntity<SearchUserDTO>(UserMapper.fromEntity(user), HttpStatus.CREATED);
         }catch (Exception ex){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+    }
+
+    @GetMapping("/email")
+    @ApiOperation(value = "Return user to email")
+    public ResponseEntity<SearchUserEmail> findUserbyEmail(@RequestBody RegistryEmail dto){
+        try {
+            UserModel user = service.findUserByEmail(dto.getEmail());
+            return ResponseEntity.ok(UserMapper.fromEntitytoUserEmail(user));
+        }catch (Exception ex){
+            return ResponseEntity.notFound().build();
         }
     }
 
