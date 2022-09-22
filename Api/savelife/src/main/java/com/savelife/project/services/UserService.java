@@ -45,6 +45,10 @@ public class UserService implements UserDetailsService {
         return user.orElseThrow(() -> new EntityNotFoundException("User Not Found!"));
     }
 
+    public UserModel findUserByEmail(String email){
+        return repository.findByEmail(email).orElseThrow(() -> new EntityNotFoundException("User Not Found!"));
+    }
+
     public Page<UserModel> listAllUsers(Pageable pageable){
         return repository.findAll(pageable);
     }

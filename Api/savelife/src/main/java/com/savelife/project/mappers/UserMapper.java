@@ -2,6 +2,7 @@ package com.savelife.project.mappers;
 
 import com.savelife.project.dto.user.RegistryUserDTO;
 import com.savelife.project.dto.user.SearchUserDTO;
+import com.savelife.project.dto.user.SearchUserEmail;
 import com.savelife.project.entities.UserModel;
 
 import java.util.ArrayList;
@@ -15,6 +16,10 @@ public class UserMapper {
 
     public static SearchUserDTO fromEntity(UserModel user){
         return new SearchUserDTO(user.getName(), user.getAge(), user.getPhone(), user.getEmail(), user.getPicture(), user.getHealthPlan(), user.getSusCard(), user.getCpf());
+    }
+
+    public static SearchUserEmail fromEntitytoUserEmail(UserModel user){
+        return new SearchUserEmail(user.getId(), user.getName(), user.getAge(), user.getPhone(), user.getEmail(), user.getPicture(), user.getHealthPlan(), user.getSusCard(), user.getCpf());
     }
 
     public static List<SearchUserDTO> fromListEntity(List<UserModel> users){
