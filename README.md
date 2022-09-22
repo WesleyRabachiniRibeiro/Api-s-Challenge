@@ -84,7 +84,7 @@ Após apertar o botão, selecione a pasta do projeto
 
 ### React Native
 
-**Abre a pasta React**
+**Abre a pasta frontend**
 ![Paste](./img/react/paste.png)
 
 **E em seguida a pasta savelifeproject**
