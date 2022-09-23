@@ -12,26 +12,30 @@ export default function Login(props) {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
+    // const login = () => {
+    //   const usernamePasswordBuffer = Buffer.from(email + ':' + password);
+    //   const base64data = usernamePasswordBuffer.toString('base64');
+    //   console.log(base64)
+    //   axios.get(
+    //     'https://api-challenge.azurewebsites.net/v1/user/',
+    //     {
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //         'Authorization': `Basic ${base64data}`
+    //       }
+    //     })
+    //     .then((res) => {
+    //       console.log(res.data)
+    //       props.navigation.navigate("HomeNavigation", {email})
+    //     })
+    //     .catch((err) => {
+    //       console.error(err);
+    //     })
+    //   console.log("pão")
+    // }
+
     const login = () => {
-      const usernamePasswordBuffer = Buffer.from(email + ':' + password);
-      const base64data = usernamePasswordBuffer.toString('base64');
-      console.log(base64)
-      axios.get(
-        'https://api-challenge.azurewebsites.net/v1/user/',
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Basic ${base64data}`
-          }
-        })
-        .then((res) => {
-          console.log(res.data)
-          props.navigation.navigate("HomeNavigation", {email})
-        })
-        .catch((err) => {
-          console.error(err);
-        })
-      console.log("pão")
+      props.navigation.navigate("HomeNavigation", {email})
     }
 
     return (
