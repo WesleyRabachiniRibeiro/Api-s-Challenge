@@ -6,6 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 import Home from '../pages/Home';
 import Chatbot from '../pages/Chatbot'
 import Settings from '../pages/Settings'
+import Mapa from '../components/Mapa';
 
 const Tab = createBottomTabNavigator()
 
@@ -60,7 +61,7 @@ export default function HomeNavigation(props) {
             }
             }}/>
           <Tab.Screen
-            name='Settings' component={Settings}
+            name='Mapa' component={Mapa}
             options={{
             headerShown: false,
             tabBarIcon: ({color, size, focused}) => {
