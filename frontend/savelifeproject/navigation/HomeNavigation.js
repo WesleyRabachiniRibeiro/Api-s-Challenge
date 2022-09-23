@@ -20,7 +20,7 @@ export default function HomeNavigation(props) {
             color: "#f0f0f0"
           },
           tabBarStyle: { 
-            position: 'relative',
+            position: 'absolute',
             bottom: 20,
             marginHorizontal: 20,
             height: 60,
@@ -70,8 +70,17 @@ export default function HomeNavigation(props) {
               }
               return <Ionicons name="map-outline" size={size} color={"#fff"}/>
             }
-            
            }}/>
+           <Tab.Screen
+              name='Settings' component={Settings}
+              options={{
+                headerShown: false,
+                tabBarStyle:{
+                  display: 'none'
+                },
+                tabBarButton: () => null
+              }}
+           />
         </Tab.Navigator>
     );
 

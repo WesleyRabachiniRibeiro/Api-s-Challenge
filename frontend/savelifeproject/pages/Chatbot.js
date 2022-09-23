@@ -165,7 +165,8 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: "row",
     alignItems: "center",
-    marginTop: 10
+    marginTop: 10,
+    marginBottom: 100
   },
   input: {
     backgroundColor: '#e0e0e0',
@@ -173,7 +174,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderTopLeftRadius: 15,
     borderBottomLeftRadius: 15,
-    flex: 1
+    flex: 2
   },
   buttonText: {
     fontSize: 30,
@@ -186,7 +187,10 @@ const styles = StyleSheet.create({
     color: "#ffffff"
   },
   flatList:{
-    margin: 20
+    marginHorizontal: 10,
+    marginTop: 20,
+    marginBottom: 0,
+    flex: 1
   },
   bloom: {
     shadowColor: "#000",

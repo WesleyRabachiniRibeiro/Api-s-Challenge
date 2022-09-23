@@ -3,7 +3,7 @@ import {Text, StyleSheet, SafeAreaView, StatusBar } from 'react-native'
 import MapView from 'react-native-maps'
 import * as Location from 'expo-location'
 
-export default function Mapa(){
+export default function Mapa(props){
 
     const [origin, setOrigin] = useState(null)
     const [destination, setDestination] = useState(null)
@@ -27,11 +27,11 @@ export default function Mapa(){
 
     return(
         <SafeAreaView style={styles.viewPrincipal}>
-            <StatusBar style="auto"/>
+            <StatusBar style="light" backgroundColor={"#000000"}/>
             <MapView
             initialRegion={origin}
             showsUserLocation={true}
-            style={{height: 660, width: 370}}
+            style={{flex: props.flex ? props.flex : 1}}
             />
         </SafeAreaView>
     )
