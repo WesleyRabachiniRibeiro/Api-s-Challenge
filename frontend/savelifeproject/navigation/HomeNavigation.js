@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, TouchableOpacity} from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import Home from '../pages/Home';
@@ -45,7 +45,15 @@ export default function HomeNavigation(props) {
            />
           <Tab.Screen name='Chatbot' component={Chatbot}
            options={{
-            headerShown: false,
+            headerShown: true,
+            headerTitle: "",
+            headerLeft: () => (
+              <TouchableOpacity onPress={() => {
+                props.navigation.navigate({name: "Home", merge: true})
+              }}>
+                <Ionicons name='arrow-back-outline' size={35} style={{marginHorizontal: 20}}/>
+              </TouchableOpacity>
+            ),
             tabBarLabelStyle: {
               display: "none",
             },
@@ -58,8 +66,11 @@ export default function HomeNavigation(props) {
                 return <Ionicons name="chatbox" size={size} color={"#fff"} style={styles.tab}/>
               }
               return <Ionicons name="chatbox-outline" size={size} color={"#fff"} style={styles.tab}/>
-            }
-            }}/>
+            },
+            tabBarStyle: {
+              display: "none"
+            }            
+           }}/>
           <Tab.Screen
             name='Mapa' component={Mapa}
             options={{
@@ -74,11 +85,19 @@ export default function HomeNavigation(props) {
            <Tab.Screen
               name='Settings' component={Settings}
               options={{
-                headerShown: false,
+                headerTitle: "",
+                headerShown: true,
+                headerLeft: () => (
+                  <TouchableOpacity onPress={() => {
+                    props.navigation.navigate({name: "Home", merge: true})
+                  }}>
+                    <Ionicons name='arrow-back-outline' size={35} style={{marginHorizontal: 20}}/>
+                  </TouchableOpacity>
+                ),
                 tabBarStyle:{
                   display: 'none'
                 },
-                tabBarButton: () => null
+                tabBarButton: () => null,
               }}
            />
         </Tab.Navigator>
