@@ -45,7 +45,7 @@ export default function Chatbot() {
 
   useEffect(() => {
     if(chatMessage.length > 1){
-      chatMessage.map(value =>{
+      chatMessage.foreach(value =>{
         console.log("Resposta: " + value)
         Speech.speak(value, {language: "pt-BR"});
         saveList(value)
