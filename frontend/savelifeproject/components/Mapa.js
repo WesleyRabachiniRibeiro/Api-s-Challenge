@@ -4,6 +4,7 @@ import MapView from 'react-native-maps'
 import * as Location from 'expo-location'
 import axios from 'axios';
 
+const { MAPS_KEY } = process.env;
 
 export default function Mapa(props){
 
@@ -23,7 +24,7 @@ export default function Mapa(props){
                     latitudeDelta: 0.05,
                     longitudeDelta: 0.05
                 })
-                
+            
                 setUrl(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=` +
                 location.coords.latitude +
                 `,` +
@@ -33,7 +34,7 @@ export default function Mapa(props){
                 `&type=` +
                 `hospital` +
                 `&key=` +
-                `AIzaSyDR5JzvwwHZDgDqsVmawcm3Zs2sHVwVH_g`)
+                `${MAPS_KEY}`)
                 console.log(url)
             }else {
                 throw new Error('Location permission not granted')
