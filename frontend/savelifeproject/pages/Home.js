@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import Mapa from '../components/Mapa';
 
 export default function Home(props) {
+
+  useEffect(() => {
+    
+  }, [])
+
     return (
       <View style={styles.container}>
         <View style={styles.menuContainer}>

@@ -5,9 +5,9 @@ import axios from "axios";
 import base64 from "react-native-base64";
 import * as Speech from 'expo-speech';
 import { Ionicons } from "@expo/vector-icons";
+const { CHATBOT_KEY } = process.env;
 
-const key = "zUXqR6NBTi_o4T67gHjZDa9v1m5gtr1Di8PJfsV5jJfC";
-const encodedKey = base64.encode(`apikey:${key}`);
+const encodedKey = base64.encode(`apikey:${CHATBOT_KEY}`);
 
 export default function Chatbot() {
   const [message, setMessage] = useState("");
@@ -105,7 +105,6 @@ export default function Chatbot() {
 
         // console.log(res.data);
         setChatMessage(res.data.output.text)
-        saveList()
       })
       .catch((err) => {
         console.error(err);
