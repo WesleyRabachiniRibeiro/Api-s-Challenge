@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TextInput, View, TouchableOpacity, PermissionsAndroid } from 'react-native';
 import CheckBox from 'expo-checkbox';
-import axios from "axios";
-import {Buffer} from "buffer"
-import base64 from 'react-native-base64';
+import * as Location from 'expo-location'
+import { GlobalContext } from '../components/GlobalContext';
 
 export default function Login(props) {
+
+  const global = React.useContext(GlobalContext)
 
   const [boxIsChecked, setBoxIsChecked] = useState(false);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
     const login = () => {
-      props.navigation.navigate("HomeNavigation", {email})
+      props.navigation.navigate("HomeNavigation")
     }
-
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Login</Text>
