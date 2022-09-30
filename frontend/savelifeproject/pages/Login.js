@@ -14,7 +14,11 @@ export default function Login(props) {
   const [email, setEmail] = useState("");
 
     const login = () => {
-      props.navigation.navigate("HomeNavigation")
+      if(email === "A"){
+        props.navigation.navigate("AmbulanceHome")
+      }else{
+        props.navigation.navigate("HomeNavigation")
+      }
     }
     return (
       <View style={styles.container}>

@@ -9,7 +9,7 @@ const {MAPS_KEY}  = process.env;
 export default function Mapa(props){
     const global = React.useContext(GlobalContext)
     let location = global.coords
-    const radius = 1*1000
+    const radius = 50*1000
     const baseUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.latitude},${location.longitude}&radius=${radius}&type=hospital&key=${MAPS_KEY}`
     const source = axios.CancelToken.source();
 
