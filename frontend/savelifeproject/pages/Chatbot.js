@@ -5,8 +5,8 @@ import axios from "axios";
 import base64 from "react-native-base64";
 import * as Speech from 'expo-speech';
 import { Ionicons } from "@expo/vector-icons";
-const { CHATBOT_KEY } = process.env;
 
+const { CHATBOT_KEY } = process.env;
 const key = CHATBOT_KEY;
 const encodedKey = base64.encode(`apikey:${key}`);
 

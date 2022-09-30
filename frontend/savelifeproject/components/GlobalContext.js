@@ -22,7 +22,7 @@ export const GlobalStorage = ({children}) => {
           longitudeDelta: 0.05
         })
       }else{
-        console.log('Acess Denied')
+        console.log('Access Denied')
       }}
 
     return (
