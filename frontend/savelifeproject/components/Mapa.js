@@ -35,7 +35,6 @@ export default function Mapa(props){
                 `hospital` +
                 `&key=` +
                 `${MAPS_KEY}`)
-                console.log(url)
             }else {
                 throw new Error('Location permission not granted')
             }

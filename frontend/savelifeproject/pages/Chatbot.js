@@ -32,9 +32,13 @@ export default function Chatbot() {
     );
   }
 
-  function saveList(chatMessage){
+  const saveList = async (chatMessage) =>{
     if(message === ""){
-      setLista([...lista, {id: counter, message: chatMessage, user: "bot"} ]);
+      if(chatMessage.length > 1){
+          setLista([...lista, {id: counter, message: [...chatMessage].join("\n\n"), user: "bot"} ]);
+      }else{
+        setLista([...lista, {id: counter, message: chatMessage, user: "bot"} ]);
+      }
     } else{
       setLista([...lista, {id: counter, message: message, user: "user"} ])
     }
@@ -45,15 +49,14 @@ export default function Chatbot() {
 
   useEffect(() => {
     if(chatMessage.length > 1){
-      chatMessage.foreach(value =>{
-        console.log("Resposta: " + value)
+      chatMessage.map(value =>{
+        saveList(chatMessage)
         Speech.speak(value, {language: "pt-BR"});
-        saveList(value)
       })
     }else{
       if(chatMessage[0] != null){
         Speech.speak(chatMessage[0], {language: "pt-BR"});
-        saveList(chatMessage[0])
+        saveList(chatMessage)
       }
     }
   },[chatMessage])
@@ -74,7 +77,7 @@ export default function Chatbot() {
         }
       )
       .then((res) => {
-        setContext(res.data.context.conversation_id)
+        setContext(res.data.context)
         setChatMessage(res.data.output.text)
       })
       .catch((err) => {
@@ -88,10 +91,7 @@ export default function Chatbot() {
         `https://api.us-south.assistant.watson.cloud.ibm.com/instances/41d486a5-09a3-4609-9629-4de348993850/v1/workspaces/5a21c745-ec95-4e46-a1e2-41f23737b1e0/message?version=2018-09-20`,
         {
           input: { text: message},
-          user_id : context,
-          context: {
-            conversation_id : context
-          }
+          context,
         },
         {
           headers: {
@@ -101,11 +101,8 @@ export default function Chatbot() {
         }
       )
       .then((res) => {
-        // console.log(context)
-
-        // console.log(res.data);
+        setContext(res.data.context)
         setChatMessage(res.data.output.text)
-        saveList()
       })
       .catch((err) => {
         console.error(err);
