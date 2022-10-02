@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, TextInput, View, TouchableOpacity, PermissionsAndroid } from 'react-native';
 import CheckBox from 'expo-checkbox';
-import * as Location from 'expo-location'
 import { GlobalContext } from '../components/GlobalContext';
 
 export default function Login(props) {

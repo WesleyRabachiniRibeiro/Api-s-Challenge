@@ -69,8 +69,6 @@ export default function Mapa(props){
         
     }
 
-
-    console.log(`destination outside ${destination}`)
     return(
         <SafeAreaView style={styles.viewPrincipal}>
             <StatusBar style="light" backgroundColor={"#000000"}/>
