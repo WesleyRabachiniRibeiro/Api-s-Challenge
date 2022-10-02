@@ -32,10 +32,10 @@ public class SecurityConfiguration {
 
                 .antMatchers(HttpMethod.POST, "/v1/user/").permitAll()
                 .antMatchers(HttpMethod.GET, "/v1/user/").hasAnyRole("USER", "ADMIN")
+                .antMatchers(HttpMethod.GET, "/v1/user/email/**").hasAnyRole("HOSPITAL", "ADMIN", "USER", "AMBULANCE")
                 .antMatchers(HttpMethod.GET, "/v1/user/**").hasAnyRole("HOSPITAL", "ADMIN", "USER", "AMBULANCE")
                 .antMatchers(HttpMethod.PUT, "/v1/user/**").hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/v1/user/**").hasAnyRole("USER", "ADMIN")
-
                 .antMatchers(HttpMethod.POST, "/v1/ambulance/").hasAnyRole("AMBULANCE", "ADMIN")
                 .antMatchers(HttpMethod.GET, "/v1/ambulance/").hasAnyRole("HOSPITAL", "ADMIN")
                 .antMatchers(HttpMethod.GET, "/v1/ambulance/**").hasAnyRole("HOSPITAL", "ADMIN", "AMBULANCE")

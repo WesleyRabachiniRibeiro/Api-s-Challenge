@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, TextInput, View, TouchableOpacity, PermissionsAndroid } from 'react-native';
 import CheckBox from 'expo-checkbox';
-import * as Location from 'expo-location'
 import { GlobalContext } from '../components/GlobalContext';
+import axios from 'axios';
+import {Buffer} from "buffer"
+import base64 from 'react-native-base64';
 
 export default function Login(props) {
 
@@ -13,13 +15,37 @@ export default function Login(props) {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
+    // const login = () => {
+    //   props.navigation.navigate("HomeNavigation")
+    // }
+
     const login = () => {
-      if(email === "A"){
+      const usernamePasswordBuffer = Buffer.from(email + ':' + password);
+      const base64data = usernamePasswordBuffer.toString('base64');
+      console.log(email)
+      axios
+      .get(
+        `https://api-challenge.azurewebsites.net/v1/user/email/${email}`,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Basic ${base64data}`
+          },
+        }
+      )
+      .then((res) => {
+        global.setEmail(res.data.email)
+        global.setName(res.data.name)
+        global.setPhone(res.data.phone)
+        global.setAge(res.data.age)
+        global.setCpf(res.data.cpf)
+        global.setSusCard(res.data.susCard)
+        global.setPicture(res.data.picture)
         props.navigation.navigate("HomeNavigation")
-      }else{
-        global.setName("Carlos Alberto")
-        props.navigation.navigate("AmbulanceHome")
-      }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
     }
     return (
       <View style={styles.container}>
