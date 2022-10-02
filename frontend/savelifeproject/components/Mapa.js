@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from 'react';
 import {StyleSheet, SafeAreaView, StatusBar } from 'react-native';
 import MapView, {Marker} from 'react-native-maps';
 import axios from 'axios';
-import MapViewDirections from 'react-native-maps-directions';
 import { GlobalContext } from '../components/GlobalContext';
 
 const {MAPS_KEY}  = process.env;

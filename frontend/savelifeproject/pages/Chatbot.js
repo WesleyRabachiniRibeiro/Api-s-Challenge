@@ -5,6 +5,7 @@ import axios from "axios";
 import base64 from "react-native-base64";
 import * as Speech from 'expo-speech';
 import { Ionicons } from "@expo/vector-icons";
+import Accordion from "../components/Accordion";
 
 const { CHATBOT_KEY } = process.env;
 const key = CHATBOT_KEY;
@@ -132,6 +133,7 @@ export default function Chatbot() {
           <Ionicons name="send" style={styles.buttonText}/>
         </TouchableOpacity>
       </View>
+      <Accordion/>
     </View>
   );
 }

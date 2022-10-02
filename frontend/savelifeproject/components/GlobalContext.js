@@ -6,6 +6,7 @@ export const GlobalContext = React.createContext();
 export const GlobalStorage = ({children}) => {
 
     const [coords, setCoords] = React.useState(null)
+    const [name, setName] = React.useState("")
 
     React.useEffect(() => {
         saveLocation()
@@ -26,7 +27,7 @@ export const GlobalStorage = ({children}) => {
       }}
 
     return (
-    <GlobalContext.Provider value={{coords, setCoords}}>
+    <GlobalContext.Provider value={{coords, setCoords, name, setName}}>
         {children}
     </GlobalContext.Provider>
     )

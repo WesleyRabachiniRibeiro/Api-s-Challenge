@@ -1,10 +1,20 @@
 import React from 'react'
-import {Text, View} from 'react-native'
+import {Text, SafeAreaView} from 'react-native'
+import { StatusBar } from 'expo-status-bar';
+import { GlobalContext } from '../components/GlobalContext';
 
 export default function AmbulanceHome(){
+    const global = React.useContext(GlobalContext)
+    const [hasOcorrencia, setHasOcorrencia] = React.useState(true)
+    let name = global.name
+    
     return(
-        <View>
-            <Text style={{fontSize: 100}}>Ambulance Home</Text>
-        </View>
+        <SafeAreaView>
+            <Text style={{fontSize: 20, marginTop: 40}}>Bem vindo(a) {name}</Text>
+            {hasOcorrencia &&
+            <><Text style={{fontSize: 20, marginTop: 40}}>Por enquanto não temos nenhuma ocorrencia para te mostrar, porém fique de olho!</Text>
+            <Text style={{fontSize: 20, marginTop: 0}}>A qualquer momento algo pode aparecer</Text></>}
+            <StatusBar style="auto" />
+        </SafeAreaView>
     )
 }

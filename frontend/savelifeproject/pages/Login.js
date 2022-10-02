@@ -15,9 +15,10 @@ export default function Login(props) {
 
     const login = () => {
       if(email === "A"){
-        props.navigation.navigate("AmbulanceHome")
-      }else{
         props.navigation.navigate("HomeNavigation")
+      }else{
+        global.setName("Carlos Alberto")
+        props.navigation.navigate("AmbulanceHome")
       }
     }
     return (
