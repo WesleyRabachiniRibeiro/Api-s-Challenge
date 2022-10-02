@@ -2,8 +2,12 @@ import React, { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import Mapa from '../components/Mapa';
+import { GlobalContext } from '../components/GlobalContext';
+
 
 export default function Home(props) {
+
+  const global = React.useContext(GlobalContext)
 
   useEffect(() => {
     
@@ -19,7 +23,7 @@ export default function Home(props) {
               />
           </TouchableOpacity>
         </View>
-        <Text style={styles.title}>Bem-vindo(a)</Text>
+        <Text style={styles.title}>Bem-vindo {global.name}</Text>
         <Text style={styles.subtitle}>Savelife é o aplicativo onde você consegue salvar a sua vida ou a vida de outras pessoas mais rápido</Text>
         <Text style={[styles.subtitle, {marginTop: 10}]}>Hospitais perto de você:</Text>
         <Mapa style={styles.map} flex={0.8} />

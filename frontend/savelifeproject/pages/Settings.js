@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { GlobalContext } from '../components/GlobalContext';
 
 export default function Settings(props) {
+
+  const global = React.useContext(GlobalContext)
 
     return (
       <View style={styles.container}>
@@ -15,8 +18,8 @@ export default function Settings(props) {
               />
           </TouchableOpacity>
           <View style={styles.informations}>
-            <Text style={styles.title}>Anonymous</Text>
-            <Text>CPF</Text>
+            <Text style={styles.title}>{global.name}</Text>
+            <Text>CPF: {global.cpf}</Text>
           </View>
         </View>
         <View style={styles.cardContainer}>

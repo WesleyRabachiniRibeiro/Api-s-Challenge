@@ -40,7 +40,7 @@ public class UserService implements UserDetailsService {
         return repository.save(user);
     }
 
-    public UserModel findUser(@PathVariable Long id){
+    public UserModel findUser(Long id){
         Optional<UserModel> user = repository.findById(id);
         return user.orElseThrow(() -> new EntityNotFoundException("User Not Found!"));
     }
