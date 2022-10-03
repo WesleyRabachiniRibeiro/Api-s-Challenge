@@ -67,7 +67,6 @@ export default function Mapa(props){
         
     }
 
-
     return(
         <SafeAreaView style={styles.viewPrincipal}>
             <StatusBar style="light" backgroundColor={"#000000"}/>

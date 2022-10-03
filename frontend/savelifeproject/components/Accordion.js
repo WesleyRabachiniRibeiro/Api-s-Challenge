@@ -17,7 +17,7 @@ export default function Accordion() {
     <View style={styles.container}>
       <View style={styles.accordion}>
         <TouchableOpacity  style={styles.button} onPress={handleClick}>
-            <Ionicons name="chevron-up-outline" size={20}/>
+        <Ionicons name={isActive ? 'chevron-down-outline' : 'chevron-up-outline'} color='#B9B9B9' size={45}/>
         </TouchableOpacity>
         <View style={[styles.accordionContent, isActive ? styles.active : styles.desactive]}>
           <View style={styles.accordionMap}>
@@ -43,14 +43,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
-    paddingTop: 15
+    paddingTop: 10
   },
   button: {
-    marginTop: 10,
-    marginBottom: 25
-  },
+    paddingTop: 5,
+    paddingBottom: 15,
+    width: windowWidth,
+    alignItems: 'center'
+  }, 
   accordionContent: {
-    width: '100%',
+    width: windowWidth,
     overflow: 'hidden',
     transition: 'all .2s ease-in-out',
   },

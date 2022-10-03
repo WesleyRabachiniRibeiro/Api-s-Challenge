@@ -13,7 +13,7 @@ export default function AmbulanceHome(){
             <Text style={{fontSize: 20, marginTop: 40}}>Bem vindo(a) {name}</Text>
             {hasOcorrencia &&
             <><Text style={{fontSize: 20, marginTop: 40}}>Por enquanto não temos nenhuma ocorrencia para te mostrar, porém fique de olho!</Text>
-            <Text style={{fontSize: 20, marginTop: 0}}>A qualquer momento algo pode aparecer</Text></>}
+            <Text style={{fontSize: 20, marginTop: 0}}>A qualquer hora um acidente pode acontecer</Text></>}
             <StatusBar style="auto" />
         </SafeAreaView>
     )
