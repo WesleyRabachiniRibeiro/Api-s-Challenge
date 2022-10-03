@@ -109,10 +109,10 @@ export default function Cadastro (props) {
           </View>
 
           <View>
-              <TextInput placeholder="Nome *" style={styles.input} onChangeText={setName} keyboardType='ascii-capable'/>
+              <TextInput placeholder="Nome Completo *" style={styles.input} onChangeText={setName} keyboardType='ascii-capable'/>
               <MaskInput placeholder="CPF *" style={styles.input} onChangeText={(masked, unmasked) => {setCpf(unmasked)}} value={cpf} keyboardType='numeric' mask={[/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-',/\d/, /\d/]}/>
               <MaskInput placeholder="Data de nascimento (DD/MM/AAAA) *" style={styles.input} onChangeText={(masked, unmasked) => {setDate(unmasked)}} value={date} keyboardType='number-pad' mask={[/\d/, /\d/, '/',  /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}/>
-              <MaskInput placeholder="Telefone *" style={styles.input} onChangeText={(masked, unmasked) => {setCellPhoneNumber(unmasked)}} value={cellphoneNumber} keyboardType='phone-pad' mask={['(', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}/>
+              <MaskInput placeholder="Telefone Celular*" style={styles.input} onChangeText={(masked, unmasked) => {setCellPhoneNumber(unmasked)}} value={cellphoneNumber} keyboardType='phone-pad' mask={['(', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}/>
               <TextInput placeholder="E-mail *" style={styles.input} onChangeText={setEmail}  keyboardType='email-address'/>
               <MaskInput placeholder="Cartão Sus *" style={styles.input} onChangeText={(masked, unmasked) => {setSusCard(unmasked)}} value={susCard}  keyboardType='numeric' mask={[/\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, /\d/,  ' ', /\d/, /\d/, /\d/, /\d/]}/>
               <TextInput placeholder="Senha *"  style={styles.input} onChangeText={setPassword} secureTextEntry={true}/>

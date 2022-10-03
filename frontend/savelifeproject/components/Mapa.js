@@ -72,7 +72,7 @@ export default function Mapa(props){
     return(
         <SafeAreaView style={styles.viewPrincipal}>
             <StatusBar style="light" backgroundColor={"#000000"}/>
-            <MapView initialRegion={origin} showsUserLocation={true} ref={mapEl} style={{flex: props.flex ? props.flex : 1}}>
+            <MapView initialRegion={origin} showsUserLocation={true} ref={mapEl} style={{flex: props.flex ? props.flex : 1}} followsUserLocation={true}>
                 {
                     Object.values(hospitals).map(value => {
                         return <Marker key={value.name} coordinate={{latitude: value.geometry.location.lat, longitude: value.geometry.location.lng}} title={value.name} pinColor={"#6914FF"}/>
