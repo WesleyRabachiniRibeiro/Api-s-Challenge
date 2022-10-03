@@ -55,6 +55,7 @@ public class UserController {
     public ResponseEntity<SearchUserEmail> findUserbyEmail(@PathVariable String email){
         try {
             UserModel user = service.findUserByEmail(email);
+            System.out.println(UserMapper.fromEntitytoUserEmail(user));
             return ResponseEntity.ok(UserMapper.fromEntitytoUserEmail(user));
         }catch (Exception ex){
             return ResponseEntity.notFound().build();
