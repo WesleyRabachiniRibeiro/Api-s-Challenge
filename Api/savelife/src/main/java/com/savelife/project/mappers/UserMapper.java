@@ -19,7 +19,11 @@ public class UserMapper {
     }
 
     public static SearchUserEmail fromEntitytoUserEmail(UserModel user){
-        return new SearchUserEmail(user.getId(), user.getName(), user.getAge(), user.getPhone(), user.getEmail(), user.getPicture(), user.getHealthPlan(), user.getSusCard(), user.getCpf());
+        List<String> roles = new ArrayList<>();
+        user.getRoles().forEach(role -> {
+          roles.add(role.getName().toString());
+        });
+        return new SearchUserEmail(user.getId(), user.getName(), user.getAge(), user.getPhone(), user.getEmail(), user.getPicture(), user.getHealthPlan(), user.getSusCard(), user.getCpf(), roles);
     }
 
     public static List<SearchUserDTO> fromListEntity(List<UserModel> users){

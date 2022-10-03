@@ -59,9 +59,7 @@ export default function Mapa(props){
             setMarkers({
                 lat: res.data.results[0].geometry.location.lat,
                 lng: res.data.results[0].geometry.location.lng,
-            })
-            console.log(`destination ${destination}`)
-            
+            })            
         })
         .catch((err) => {
             console.error(err);

@@ -5,7 +5,6 @@ import CheckBox from 'expo-checkbox';
 import { GlobalContext } from '../components/GlobalContext';
 import axios from 'axios';
 import {Buffer} from "buffer"
-import base64 from 'react-native-base64';
 
 export default function Login(props) {
 
@@ -34,14 +33,22 @@ export default function Login(props) {
         }
       )
       .then((res) => {
-        global.setEmail(res.data.email)
-        global.setName(res.data.name)
-        global.setPhone(res.data.phone)
-        global.setAge(res.data.age)
-        global.setCpf(res.data.cpf)
-        global.setSusCard(res.data.susCard)
-        global.setPicture(res.data.picture)
-        props.navigation.navigate("HomeNavigation")
+          global.setEmail(res.data.email)
+          global.setName(res.data.name)
+          global.setPhone(res.data.phone)
+          global.setAge(res.data.age)
+          global.setCpf(res.data.cpf)
+          global.setSusCard(res.data.susCard)
+          global.setPicture(res.data.picture)
+          console.log(res.data)
+          global.setRoles(res.data.role)
+          if(res.data.role.indexOf("ROLE_AMBULANCE") > -1){
+            props.navigation.navigate("AmbulanceNavigation")
+          }else if(res.data.role.indexOf("ROLE_HOSPITAL") > -1){
+            console.log("Hospital logged")
+          }else if(res.data.role.indexOf("ROLE_USER") > -1){
+            props.navigation.navigate("HomeNavigation")
+          }  
       })
       .catch((err) => {
         console.error(err);

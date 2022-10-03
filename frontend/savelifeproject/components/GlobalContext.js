@@ -14,6 +14,7 @@ export const GlobalStorage = ({children}) => {
     const [cpf, setCpf] = React.useState("")
     const [susCard, setSusCard] = React.useState("")
     const [healthPlan, setHealthPlan] = React.useState("")
+    const [roles, setRoles] = React.useState("")
 
     React.useEffect(() => {
         saveLocation()
@@ -34,7 +35,7 @@ export const GlobalStorage = ({children}) => {
       }}
 
     return (
-    <GlobalContext.Provider value={{coords, setCoords, name, setName, email, setEmail, phone, setPhone, age, setAge, cpf, setCpf, susCard, setSusCard, picture, setPicture, healthPlan, setHealthPlan}}>
+    <GlobalContext.Provider value={{coords, setCoords, name, setName, email, setEmail, phone, setPhone, age, setAge, cpf, setCpf, susCard, setSusCard, picture, setPicture, healthPlan, setHealthPlan, roles, setRoles}}>
         {children}
     </GlobalContext.Provider>
     )
