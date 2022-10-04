@@ -9,10 +9,6 @@ export default function Home(props) {
 
   const global = React.useContext(GlobalContext)
 
-  useEffect(() => {
-    
-  }, [])
-
     return (
       <View style={styles.container}>
         <View style={styles.menuContainer}>

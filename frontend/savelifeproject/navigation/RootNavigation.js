@@ -17,7 +17,7 @@ export default function RootNavigation() {
           <Stack.Screen name='Login' component={Login}/>
           <Stack.Screen name='Cadastro' component={Cadastro}/>
           <Stack.Screen name='HomeNavigation' component={HomeNavigation}/>
-          <Stack.Screen name='AmbulanceHome' component={AmbulanceNavigation}/>
+          <Stack.Screen name='AmbulanceNavigation' component={AmbulanceNavigation}/>
         </Stack.Navigator>
     );
 }

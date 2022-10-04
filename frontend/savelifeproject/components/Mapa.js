@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, createRef } from 'react';
 import {StyleSheet, SafeAreaView, StatusBar } from 'react-native';
 import MapView, {Marker} from 'react-native-maps';
 import axios from 'axios';
@@ -12,7 +12,8 @@ export default function Mapa(props){
     const baseUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.latitude},${location.longitude}&radius=${radius}&type=hospital&key=${MAPS_KEY}`
     const source = axios.CancelToken.source();
 
-    const mapEl=useRef(null);
+    const mapEl = useRef();
+
     const [origin, setOrigin] = useState(null)
     const [destination, setDestination] = useState(null)
     const [hospitals, setHospitals] = useState([])
@@ -67,10 +68,16 @@ export default function Mapa(props){
         
     }
 
+    const goToMyLocation = async () => {
+        mapEl.current.animateCamera({center: {"latitude":location.latitude, "longitude": location.longitude}});
+}
+
     return(
         <SafeAreaView style={styles.viewPrincipal}>
             <StatusBar style="light" backgroundColor={"#000000"}/>
-            <MapView initialRegion={origin} showsUserLocation={true} ref={mapEl} style={{flex: props.flex ? props.flex : 1}} followsUserLocation={true}>
+            <MapView region={origin} followsUserLocation={true} showsUserLocation={true} ref={mapEl} style={{flex: props.flex ? props.flex : 1}} onRe={
+                console.log("lugar mudou")
+            }>
                 {
                     Object.values(hospitals).map(value => {
                         return <Marker key={value.name} coordinate={{latitude: value.geometry.location.lat, longitude: value.geometry.location.lng}} title={value.name} pinColor={"#6914FF"}/>

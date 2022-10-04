@@ -6,7 +6,6 @@ import base64 from "react-native-base64";
 import * as Speech from 'expo-speech';
 import { Ionicons } from "@expo/vector-icons";
 import Accordion from "../components/Accordion";
-import Voice  from "@react-native-voice/voice";
 
 const { CHATBOT_KEY } = process.env;
 const key = CHATBOT_KEY;
@@ -18,50 +17,6 @@ export default function Chatbot() {
   let [context, setContext] = useState("");
   const [lista, setLista] = useState([]);
   const [counter, setCounter] = useState(1);
-
-
-
-
-
-
-
-
-  let [started, setStarted] = useState(false);
-  let [results, setResults] = useState([]);
-
-  useEffect(() => {
-    Voice.onSpeechResults = onSpeechResults;
-    Voice.onSpeechError = onSpeechError;
-    return () => {
-      Voice.destroy().then(Voice.removeAllListeners);
-    }
-  }, []);
-
-  const startSpeechToText = async () => {
-    await Voice.start("pt-Br");
-    setStarted(true);
-  };
-
-  const stopSpeechToText = async () => {
-    await Voice.stop();
-    setStarted(false);
-  };
-
-  const onSpeechResults = (result) => {
-    setResults(result.value);
-  };
-
-  const onSpeechError = (error) => {
-    console.log(error);
-  };
-
-
-
-
-
-
-
-
 
   function Message(props) { 
 
@@ -178,9 +133,7 @@ export default function Chatbot() {
           <Ionicons name="send" style={styles.buttonText}/>
         </TouchableOpacity>
       </View>
-      {!started ? <Button title='Start Speech to Text' onPress={startSpeechToText} /> : undefined}
-      {started ? <Button title='Stop Speech to Text' onPress={stopSpeechToText} /> : undefined}
-      {/* <Accordion/> */}
+      <Accordion/> 
     </View>
   );
 }

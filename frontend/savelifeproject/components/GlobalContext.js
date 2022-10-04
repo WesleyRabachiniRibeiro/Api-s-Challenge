@@ -1,5 +1,7 @@
 import React from 'react'
 import * as Location from 'expo-location'
+import {initializeApp, getApps} from "firebase/app";
+import {getDatabase, set, ref} from "firebase/database"
 
 export const GlobalContext = React.createContext();
 
@@ -15,6 +17,42 @@ export const GlobalStorage = ({children}) => {
     const [susCard, setSusCard] = React.useState("")
     const [healthPlan, setHealthPlan] = React.useState("")
     const [roles, setRoles] = React.useState("")
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCFPeKepVl4QVqGXJLwdAbmADOQcMrW_-0",
+      authDomain: "savelife-74f45.firebaseapp.com",
+      databaseURL: "https://savelife-74f45-default-rtdb.firebaseio.com",
+      projectId: "savelife-74f45",
+      storageBucket: "savelife-74f45.appspot.com",
+      messagingSenderId: "1086577315428",
+      appId: "1:1086577315428:web:910a240e7ec688b0721971"
+    };
+
+    let app;
+    // Initialize Firebase
+    if(getApps.length === 0){
+        app = initializeApp(firebaseConfig);
+    }
+
+    const database = getDatabase(app)
+
+    function writeUserCoords(){
+      set(ref(database, 'users/' + "paciente"), {
+        coords: {
+          latitude: 321,
+          longitude: 123
+        }
+      })
+    }
+  
+    function writeAmbulanceCoords(){
+      set(ref(database, 'users/' + "paciente"), {
+        coords: {
+          latitude: 123,
+          longitude: 321
+        }
+      })
+    }
 
     React.useEffect(() => {
         saveLocation()
