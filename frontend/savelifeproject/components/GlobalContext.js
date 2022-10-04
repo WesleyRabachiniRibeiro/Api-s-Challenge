@@ -8,6 +8,7 @@ export const GlobalContext = React.createContext();
 export const GlobalStorage = ({children}) => {
 
     const [coords, setCoords] = React.useState(null)
+    const [id, setId] = React.useState(null)
     const [name, setName] = React.useState("")
     const [email, setEmail] = React.useState("")
     const [phone, setPhone] = React.useState("")
@@ -17,6 +18,9 @@ export const GlobalStorage = ({children}) => {
     const [susCard, setSusCard] = React.useState("")
     const [healthPlan, setHealthPlan] = React.useState("")
     const [roles, setRoles] = React.useState("")
+    const [token, setToken] = React.useState("")
+    const [isRequest, setIsRequest] = useState(false);
+
 
     const firebaseConfig = {
       apiKey: "AIzaSyCFPeKepVl4QVqGXJLwdAbmADOQcMrW_-0",
@@ -39,17 +43,17 @@ export const GlobalStorage = ({children}) => {
     function writeUserCoords(){
       set(ref(database, 'users/' + "paciente"), {
         coords: {
-          latitude: 321,
-          longitude: 123
+          latitude: coords.latitude,
+          longitude: coords.longitude
         }
       })
     }
   
     function writeAmbulanceCoords(){
-      set(ref(database, 'users/' + "paciente"), {
+      set(ref(database, 'users/' + "ambulancia"), {
         coords: {
-          latitude: 123,
-          longitude: 321
+          latitude: coords.latitude,
+          longitude: coords.longitude
         }
       })
     }
@@ -73,7 +77,7 @@ export const GlobalStorage = ({children}) => {
       }}
 
     return (
-    <GlobalContext.Provider value={{coords, setCoords, name, setName, email, setEmail, phone, setPhone, age, setAge, cpf, setCpf, susCard, setSusCard, picture, setPicture, healthPlan, setHealthPlan, roles, setRoles}}>
+    <GlobalContext.Provider value={{id, setId, coords, setCoords, name, setName, email, setEmail, phone, setPhone, age, setAge, cpf, setCpf, susCard, setSusCard, picture, setPicture, healthPlan, setHealthPlan, roles, setRoles, token, setToken, writeUserCoords, writeAmbulanceCoords, isRequest, setIsRequest}}>
         {children}
     </GlobalContext.Provider>
     )

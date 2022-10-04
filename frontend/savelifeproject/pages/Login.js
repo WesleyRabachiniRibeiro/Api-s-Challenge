@@ -21,6 +21,7 @@ export default function Login(props) {
     const login = () => {
       const usernamePasswordBuffer = Buffer.from(email + ':' + password);
       const base64data = usernamePasswordBuffer.toString('base64');
+      global.setToken(base64data)
       console.log(email)
       axios
       .get(
@@ -33,6 +34,7 @@ export default function Login(props) {
         }
       )
       .then((res) => {
+          global.setId(res.data.id)
           global.setEmail(res.data.email)
           global.setName(res.data.name)
           global.setPhone(res.data.phone)
@@ -40,7 +42,7 @@ export default function Login(props) {
           global.setCpf(res.data.cpf)
           global.setSusCard(res.data.susCard)
           global.setPicture(res.data.picture)
-          console.log(res.data)
+          console.log(res.data.id)
           global.setRoles(res.data.role)
           if(res.data.role.indexOf("ROLE_AMBULANCE") > -1){
             props.navigation.navigate("AmbulanceNavigation")

@@ -14,14 +14,14 @@ export default function Accordion() {
   }
 
   return (
-    <View style={styles.container}>
+    <View>
       <View style={styles.accordion}>
         <TouchableOpacity  style={styles.button} onPress={handleClick}>
-        <Ionicons name={isActive ? 'chevron-down-outline' : 'chevron-up-outline'} color='#B9B9B9' size={45}/>
+          <Ionicons name={isActive ? 'chevron-down-outline' : 'chevron-up-outline'} style={{alignSelf: "center"}} color='#B9B9B9' size={45}/>
         </TouchableOpacity>
         <View style={[styles.accordionContent, isActive ? styles.active : styles.desactive]}>
           <View style={styles.accordionMap}>
-            <Mapa/>
+            <Mapa flex={0.9}/>
           </View>
         </View>
       </View>
@@ -30,10 +30,7 @@ export default function Accordion() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white'
-  },
+
   accordion: {
     backgroundColor: '#fff',
     position: 'absolute',
@@ -43,13 +40,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
-    paddingTop: 10
+    paddingTop: 10,
+    borderWidth: 1,
+    borderColor: "#f0f0f0",
   },
   button: {
-    paddingTop: 5,
-    paddingBottom: 15,
+    paddingTop: 1,
+    paddingBottom: 1,
     width: windowWidth,
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent: "center"
   }, 
   accordionContent: {
     width: windowWidth,
@@ -58,13 +58,13 @@ const styles = StyleSheet.create({
   },
   accordionMap: {
     backgroundColor: 'white',
-    width: windowWidth,
-    height: windowHeight * 0.9
+    height: windowHeight * 0.9,
+    marginHorizontal: 20
   },
   desactive: {
     height: 0
   },
   active: {
-    height: windowHeight * 0.85
+    height: windowHeight * 0.8
   }
 });

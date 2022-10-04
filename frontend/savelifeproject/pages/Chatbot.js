@@ -1,22 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, TouchableOpacity, TextInput, Image, FlatList, Button } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, TextInput, Image, FlatList, Button, TouchableHighlight, ScrollView } from "react-native";
 import axios from "axios";
 import base64 from "react-native-base64";
+import * as FileSystem from "expo-file-system";
+import { Audio } from "expo-av";
 import * as Speech from 'expo-speech';
 import { Ionicons } from "@expo/vector-icons";
 import Accordion from "../components/Accordion";
+import { GlobalContext } from '../components/GlobalContext';
+
 
 const { CHATBOT_KEY } = process.env;
 const key = CHATBOT_KEY;
 const encodedKey = base64.encode(`apikey:${key}`);
 
 export default function Chatbot() {
-  const [message, setMessage] = useState("");
   const [chatMessage, setChatMessage] = useState([]);
   let [context, setContext] = useState("");
   const [lista, setLista] = useState([]);
   const [counter, setCounter] = useState(1);
+  const [message, setMessage] = useState("")
+  const [requestId, setRequestId] = useState(false);
+
+  const global = React.useContext(GlobalContext)
 
   function Message(props) { 
 
@@ -33,6 +40,55 @@ export default function Chatbot() {
       </View>
     );
   }
+
+  console.log(global.id)
+
+  const callAmbulance = () => {
+    axios.post("https://api-challenge.azurewebsites.net/v1/request/",
+    {
+      user: global.id,
+      hospital : "R. Conselheiro Brotero 1486",
+      urgent: "ALTA",
+      description : message
+    },
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Basic ${global.token}`
+      },
+    }).then((res) => {
+      console.log(res.data)
+      setRequestId(res.data.id)
+    }).catch((err) => {
+      console.log(err)
+    })
+
+    if(global.roles.indexOf("ROLE_AMBULANCE")){
+      global.writeAmbulanceCoords()
+    }
+
+    if(global.roles.indexOf("ROLE_USER")){
+      global.writeUserCoords()
+    }
+  }
+
+  const updateCall = () => {
+    axios.put(`https://api-challenge.azurewebsites.net/v1/request/${requestId}`,
+    {
+      description : message
+    },
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Basic ${global.token}`
+      },
+    }).then((res) => {
+      console.log(res.data)
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
+
 
   const saveList = async (chatMessage) =>{
     if(message === ""){
@@ -87,6 +143,9 @@ export default function Chatbot() {
       });
   }, []);
 
+
+  
+
   const sendMessage = () => {
     axios
       .post(
@@ -105,6 +164,13 @@ export default function Chatbot() {
       .then((res) => {
         setContext(res.data.context)
         setChatMessage(res.data.output.text)
+        if(res.data.output.text == "Respire fundo e conte para mim o que aconteceu, enquanto isso iremos fazer a requisição de sua ambulância"){
+          callAmbulance()
+          global.setIsRequest(true)
+        }
+        if(global.isRequest){
+          updateCall()
+        }
       })
       .catch((err) => {
         console.error(err);
@@ -133,7 +199,7 @@ export default function Chatbot() {
           <Ionicons name="send" style={styles.buttonText}/>
         </TouchableOpacity>
       </View>
-      <Accordion/> 
+      <Accordion/>
     </View>
   );
 }
@@ -208,5 +274,8 @@ const styles = StyleSheet.create({
   },
   message: {
     fontSize: 20,
+  },
+  messageBox: {
+    backgroundColor: "red"
   }
 });
