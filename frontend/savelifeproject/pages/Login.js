@@ -45,7 +45,7 @@ export default function Login(props) {
           console.log(res.data.id)
           global.setRoles(res.data.role)
           if(res.data.role.indexOf("ROLE_AMBULANCE") > -1){
-            props.navigation.navigate("AmbulanceNavigation")
+            props.navigation.navigate("AmbulanceHome")
           }else if(res.data.role.indexOf("ROLE_HOSPITAL") > -1){
             console.log("Hospital logged")
           }else if(res.data.role.indexOf("ROLE_USER") > -1){

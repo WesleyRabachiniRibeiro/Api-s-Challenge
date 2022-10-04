@@ -42,6 +42,7 @@ export const GlobalStorage = ({children}) => {
 
     function writeUserCoords(){
       set(ref(database, 'users/' + "paciente"), {
+        userId: 1,
         coords: {
           latitude: coords.latitude,
           longitude: coords.longitude
@@ -60,6 +61,7 @@ export const GlobalStorage = ({children}) => {
 
     React.useEffect(() => {
         saveLocation()
+        writeUserCoords()
     }, []) 
 
     const saveLocation = async () => {
