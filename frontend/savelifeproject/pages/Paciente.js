@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
   waitTime: {
     fontSize: 25,
     color: '#fff',
-    fontWeight: 500,
+    fontWeight: "500",
     marginBottom: 5
   },
   waitDistance: {
