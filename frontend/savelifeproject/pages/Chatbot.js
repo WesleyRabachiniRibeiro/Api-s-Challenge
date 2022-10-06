@@ -22,6 +22,8 @@ export default function Chatbot() {
   const [counter, setCounter] = useState(1);
   const [message, setMessage] = useState("")
   const [requestId, setRequestId] = useState(false);
+  const [permission, setPermission] = React.useState("");
+  const [recording, setRecording] = React.useState("");
 
   const global = React.useContext(GlobalContext)
 
@@ -90,15 +92,16 @@ export default function Chatbot() {
   }
 
 
-  const saveList = async (chatMessage) =>{
-    if(message === ""){
-      if(chatMessage.length > 1){
-          setLista([...lista, {id: counter, message: [...chatMessage].join("\n\n"), user: "bot"} ]);
+  const saveList = async (user, bot) =>{
+    if(user === ""){
+      console.log("message: " + bot)
+      if(bot.length > 1){
+          setLista([...lista, {id: counter, message: [...bot].join("\n\n"), user: "bot"} ]);
       }else{
-        setLista([...lista, {id: counter, message: chatMessage, user: "bot"} ]);
+        setLista([...lista, {id: counter, message: bot, user: "bot"} ]);
       }
     } else{
-      setLista([...lista, {id: counter, message: message, user: "user"} ])
+      setLista([...lista, {id: counter, message: user, user: "user"} ])
     }
     setCounter(counter + 1);
     setChatMessage("")
@@ -108,13 +111,13 @@ export default function Chatbot() {
   useEffect(() => {
     if(chatMessage.length > 1){
       chatMessage.map(value =>{
-        saveList(chatMessage)
+        saveList("", chatMessage)
         Speech.speak(value, {language: "pt-BR"});
       })
-    }else{
+    }else{        
       if(chatMessage[0] != null){
         Speech.speak(chatMessage[0], {language: "pt-BR"});
-        saveList(chatMessage)
+        saveList("", chatMessage)
       }
     }
   },[chatMessage])
@@ -143,12 +146,12 @@ export default function Chatbot() {
       });
   }, []);
 
-  const sendMessage = () => {
+  const sendMessage = (messageUser) => {
     axios
       .post(
         `https://api.us-south.assistant.watson.cloud.ibm.com/instances/41d486a5-09a3-4609-9629-4de348993850/v1/workspaces/5a21c745-ec95-4e46-a1e2-41f23737b1e0/message?version=2018-09-20`,
         {
-          input: { text: message},
+          input: { text: messageUser},
           context,
         },
         {
@@ -162,7 +165,7 @@ export default function Chatbot() {
         setContext(res.data.context)
         setChatMessage(res.data.output.text)
         if(res.data.output.text == "Respire fundo e conte para mim o que aconteceu, enquanto isso iremos fazer a requisição de sua ambulância"){
-          callAmbulance()
+          // callAmbulance()
           global.setIsRequest(true)
         }
         if(global.isRequest){
@@ -175,6 +178,61 @@ export default function Chatbot() {
 
   }
 
+  const userMessage = async (recording) => {
+    const formData = new FormData();
+    formData.append("file", {
+      uri: recording.getURI(),
+      name: "test.wav",
+      type: "audio/wav",
+    });
+    await axios
+      .post('https://nodered-app-1tdsr-fiap-2021.mybluemix.net/transcription', formData, {
+        responseType: 'text',
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then(response => {
+        saveList(response.data, "")
+        sendMessage(response.data)
+      })
+      .catch(error => {
+        console.log(error);
+        console.error(error.response);
+      });
+  }
+
+  async function startRecording() {
+    try {
+      const permission = await Audio.requestPermissionsAsync();
+      if (permission.status === "granted") {
+        await Audio.setAudioModeAsync({
+          allowsRecordingIOS: true,
+          playsInSilentModeIOS: true,
+        });
+        const recording = new Audio.Recording();
+        try {
+          await recording.prepareToRecordAsync(Audio.RECORDING_OPTIONS_PRESET_HIGH_QUALITY);
+          await recording.startAsync();
+        } catch (err) {
+          console.log(err)
+        }
+        setRecording(recording)
+      } else {
+        setPermission("Please grant permission to app to access microphone");
+      }
+    } catch (err) {
+      console.error("Failed to start recording", err);
+    }
+  }
+  
+  async function stopRecording() {
+    await recording.stopAndUnloadAsync();
+    let resp = recording
+    setRecording("")
+    userMessage(resp)
+  }
+
   return (
     <View style={styles.container}>
       <StatusBar style="light" backgroundColor="#000000" />
@@ -185,7 +243,7 @@ export default function Chatbot() {
       <FlatList  data={lista} keyExtractor={item => item.id} renderItem={({item})=> {
           return <Message {...item}/>
         }} style={styles.flatList}/>
-      <View style={styles.inputContainer}>
+      {/* <View style={styles.inputContainer}>
         <TextInput placeholder="Digite aqui..." style={styles.input} onChangeText={setMessage} value={message}/>
         <TouchableOpacity style={styles.button} onPress={() => {
           sendMessage()
@@ -193,6 +251,13 @@ export default function Chatbot() {
           setMessage("")
           }}>
           <Ionicons name="send" style={styles.buttonText}/>
+        </TouchableOpacity>
+      </View> */}
+      <View style={styles.inputContainer}>
+        <Text>{permission}</Text>
+        <TouchableOpacity style={styles.mic}
+          onPress={recording ? stopRecording : startRecording}>
+            {recording ? <Ionicons name="mic" size={50} style={styles.mic}/> : <Ionicons name="mic-outline" size={50} style={styles.mic}/>}
         </TouchableOpacity>
       </View>
       {global.isRequest && <Accordion/>}
@@ -226,9 +291,9 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     flexDirection: "row",
-    alignItems: "center",
+    alignSelf: "center",
     marginTop: 10,
-    marginBottom: global.isRequest ? 80 : 10
+    marginBottom: 70
   },
   input: {
     backgroundColor: '#e0e0e0',
@@ -273,5 +338,8 @@ const styles = StyleSheet.create({
   },
   messageBox: {
     backgroundColor: "red"
+  },
+  mic: {
+    color: "red"
   }
 });

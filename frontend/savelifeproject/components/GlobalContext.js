@@ -19,7 +19,7 @@ export const GlobalStorage = ({children}) => {
     const [healthPlan, setHealthPlan] = React.useState("")
     const [roles, setRoles] = React.useState("")
     const [token, setToken] = React.useState("")
-    const [isRequest, setIsRequest] = useState(false);
+    const [isRequest, setIsRequest] = React.useState(false);
 
     const firebaseConfig = {
       apiKey: "AIzaSyCFPeKepVl4QVqGXJLwdAbmADOQcMrW_-0",
