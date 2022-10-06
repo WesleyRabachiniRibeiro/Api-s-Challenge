@@ -1,19 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import Mapa from '../components/Mapa';
+import { GlobalContext } from '../components/GlobalContext';
 
-export default function Home() {
+
+export default function Home(props) {
+
+  const global = React.useContext(GlobalContext)
+
     return (
       <View style={styles.container}>
         <View style={styles.menuContainer}>
-            {/* Menu */}
+          <TouchableOpacity onPress={() => {props.navigation.navigate("Settings")}}>
+            <Image
+              style={styles.img}
+              source={require('../assets/person.png')}
+              />
+          </TouchableOpacity>
         </View>
-        <Text style={styles.title}>Bem-vindo(a)</Text>
-        <Text style={styles.subtitle}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</Text>
-        <View style={styles.mapaContainer}>
-            <Text style={styles.subtitle}>Hospitais perto de você:</Text>
-            {/* Mapa */}
-        </View>
+        <Text style={styles.title}>Bem-vindo {global.name}</Text>
+        <Text style={styles.subtitle}>Savelife é o aplicativo onde você consegue salvar a sua vida ou a vida de outras pessoas mais rápido</Text>
+        <Text style={[styles.subtitle, {marginTop: 10}]}>Hospitais perto de você:</Text>
+        <Mapa style={styles.map} flex={0.8} />
         <StatusBar style="auto" />
       </View>
     );
@@ -23,22 +32,28 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     height: '100%',
-    paddingTop: 25,
+    paddingTop: 50,
+    paddingHorizontal: 25,
     backgroundColor: '#FCFCFC',
   },
   menuContainer: {
-    flexDirection: 'row'
+    flexDirection: 'row-reverse'
+  },
+  img: {
+    width: 80,
+    height: 80,
+    borderRadius: 50,
+    resizeMode: "cover"
   },
   title: {
     color: '#000',
-    paddingHorizontal: 25,
     fontSize: 23,
-    lineHeight: 40
+    lineHeight: 40,
+    fontWeight: "bold"
   },
   subtitle: {
     color: '#000',
-    paddingHorizontal: 25,
-    fontSize: 15
+    fontSize: 16
   },
   mapaContainer: {
     paddingTop: 40
@@ -75,6 +90,6 @@ const styles = StyleSheet.create({
   menuInferiorButtonText: {
     color: '#fff',
     fontSize: 60,
-    marginTop: -15,
-  }
+    marginTop: 15,
+  },
 });

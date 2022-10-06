@@ -1,111 +1,50 @@
 import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TouchableOpacity, TextInput, FlatList } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import PhoneItem from '../components/PhoneItem';
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { GlobalContext } from '../components/GlobalContext';
 
-export default function Settings() {
+export default function Settings(props) {
 
+  const global = React.useContext(GlobalContext)
 
-  const [ddd, setDdd] = useState('')
-  const [phoneNumber, setPhoneNumber] = useState('')
-  const [numbers, setNumbers] = useState([])
-  const [itemNumbers, setItemNumbers] = useState([])
-
-  useEffect(() => {
-    setNumberList()
-  }, [])
-
-  async function saveData(){
-    const novoId = await geraId()
-    const telefone = {
-      id: novoId.toString(),
-      ddd: ddd,
-      number: phoneNumber
-    }
-    try{
-      const jsonValue = JSON.stringify(telefone)
-      itemNumbers.forEach(async (item) => {
-        if(item.number === telefone.number){
-          var index = itemNumbers.indexOf(item)
-          console.log(index)
-          var removedItem = itemNumbers.splice(index, 1)
-          console.log(removedItem)
-          await AsyncStorage.removeItem(removedItem[0].id)
-          await AsyncStorage.setItem(telefone.id, jsonValue)
-        }
-      })
-      await AsyncStorage.setItem(telefone.id, jsonValue)
-      setNumberList()
-    }catch (e){
-      console.log(e)
-    }
-  }
-
-  async function geraId(){
-    const todasChaves = await AsyncStorage.getAllKeys()
-    if(todasChaves <= 0){
-      return 1
-    }
-    return todasChaves.length + 1
-  }
-
-  async function getData(key){
-    try{
-      const value = await AsyncStorage.getItem(key)
-      if(value !== null){
-        console.log(value)
-      }
-    } catch (e){
-      console.log(e)
-    }
-  }
-
-  async function setNumberList(){
-    const list = []
-    const allKeys = await AsyncStorage.getAllKeys()
-    const item = await AsyncStorage.multiGet(allKeys)
-    item.forEach((item) => {
-      const obj = JSON.parse(item[1])
-      list.push(obj)
-    })
-    setItemNumbers(list)
-    console.log(`All Keys ${allKeys}`)
-  }
-
-  async function editPhone(item){
-    setDdd(item.ddd)
-    setPhoneNumber(item.number)
-
-  }
-
-  async function removePhone(item){
-    var index = itemNumbers.indexOf(item)
-    var removedItem = itemNumbers.splice(index, 1)
-    await AsyncStorage.removeItem(removedItem[0].id)
-  }
-
-  function getAllData(){
-    return itemNumbers.map((item) => (
-      <PhoneItem key={item.id} ddd={item.ddd} number={item.number} onEditar={() => editPhone(item)} onDeletar={() => {
-        removePhone(item)
-        setNumberList()
-      }}/>
-    ))
-  }
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Lista de Contato</Text>
-        <Text style={styles.title}>Digite um novo telefone aqui</Text>
-        <View style={{flexDirection: 'row', marginLeft: 20}}>
-          <TextInput placeholder="DDD *" style={styles.input} onChangeText={setDdd} keyboardType='numeric' value={ddd}/>
-          <TextInput placeholder="Numero De Telefone *" style={styles.input} onChangeText={setPhoneNumber} keyboardType='phone-pad' value={phoneNumber}/>
-          <TouchableOpacity onPress={saveData}>
-            <Text style={{marginTop: 45, marginLeft: 20, color: 'green'}}>Confirmar</Text>
+        <View style={styles.profile}>
+          <TouchableOpacity>
+            <Image
+              style={styles.img}
+              source={require('../assets/person.png')}
+              />
+          </TouchableOpacity>
+          <View style={styles.informations}>
+            <Text style={styles.title}>{global.name}</Text>
+            <Text>CPF: {global.cpf}</Text>
+          </View>
+        </View>
+        <View style={styles.cardContainer}>
+          <TouchableOpacity style={styles.card}>
+            <Ionicons name='key' style={styles.cardIcon} />
+            <View>
+              <Text style={styles.cardTitle}>Conta</Text>
+              <Text style={styles.cardSubTitle}>Configurações relacionadas a conta.</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.card}>
+            <Ionicons name='information-circle' style={styles.cardIcon}/>
+            <View>
+              <Text style={styles.cardTitle}>Informações</Text>
+              <Text style={styles.cardSubTitle}>Informações gerais do app</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.card}>
+            <Ionicons name='lock-closed' style={styles.cardIcon}/>
+            <View>
+              <Text style={styles.cardTitle}>Privacidade</Text>
+              <Text style={styles.cardSubTitle}>Alteração das configurações de Privacidade.</Text>
+            </View>
           </TouchableOpacity>
         </View>
-        {getAllData()}
-        <StatusBar style="auto" />
       </View>
     );
 }
@@ -113,23 +52,49 @@ export default function Settings() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 25,
+        paddingTop: 50,
+        paddingHorizontal: 25,
         backgroundColor: '#FCFCFC',
       },
+      profile: {
+        flexDirection: "row",
+        alignItems: "center",
+        marginBottom: 20
+      },
+      informations: {
+        marginLeft: 10
+      },
       title: {
-        color: '#000',
-        paddingHorizontal: 25,
-        fontSize: 23,
-        lineHeight: 40,
-        marginTop: 10
+        fontSize: 24,
+        fontWeight: "bold"
       },
-      input: {
-        backgroundColor: '#fff',
-        marginVertical: 5,
-        paddingVertical: 10,
-        paddingHorizontal: 10,
-        marginTop: 30,
-        borderColor: 'black',
-        borderWidth: 1
+      img: {
+        width: 60,
+        height: 60,
+        borderRadius: 50,
+        resizeMode: "cover"
       },
+      cardContainer: {
+        flex: 1,
+      },
+      card: {
+        flexDirection: "row",
+        alignItems: "center",
+        backgroundColor: "#D9D9D9",
+        padding: 10,
+        height: 100,
+        marginBottom: 30,
+        borderRadius: 20
+      },
+      cardIcon: {
+        fontSize: 30,
+        marginRight: 10
+      },
+      cardTitle: {
+        fontSize: 24,
+        fontWeight: "bold"
+      },
+      cardSubTitle: {
+        fontSize: 18,
+      }
 })

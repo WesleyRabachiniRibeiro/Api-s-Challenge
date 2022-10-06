@@ -4,6 +4,7 @@ import { StyleSheet, Text, TextInput, View, TouchableOpacity, Button } from 'rea
 import CheckBox from 'expo-checkbox';
 import { ScrollView } from 'react-native-gesture-handler';
 import axios from "axios";
+import MaskInput from 'react-native-mask-input';
 
 export default function Cadastro (props) {
 
@@ -108,13 +109,13 @@ export default function Cadastro (props) {
           </View>
 
           <View>
-              <TextInput placeholder="Nome *" style={styles.input} onChangeText={setName} keyboardType='ascii-capable'/>
-              <TextInput placeholder="CPF *" style={styles.input} onChangeText={setCpf} keyboardType='numeric'/>
-              <TextInput placeholder="Data de nascimento (DD/MM/AAAA) *" style={styles.input} onChangeText={setDate} keyboardType='number-pad'/>
-              <TextInput placeholder="Telefone *" style={styles.input} onChangeText={setCellPhoneNumber} keyboardType='phone-pad'/>
+              <TextInput placeholder="Nome Completo *" style={styles.input} onChangeText={setName} keyboardType='ascii-capable'/>
+              <MaskInput placeholder="CPF *" style={styles.input} onChangeText={(masked, unmasked) => {setCpf(unmasked)}} value={cpf} keyboardType='numeric' mask={[/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-',/\d/, /\d/]}/>
+              <MaskInput placeholder="Data de nascimento (DD/MM/AAAA) *" style={styles.input} onChangeText={(masked, unmasked) => {setDate(unmasked)}} value={date} keyboardType='number-pad' mask={[/\d/, /\d/, '/',  /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}/>
+              <MaskInput placeholder="Telefone Celular*" style={styles.input} onChangeText={(masked, unmasked) => {setCellPhoneNumber(unmasked)}} value={cellphoneNumber} keyboardType='phone-pad' mask={['(', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}/>
               <TextInput placeholder="E-mail *" style={styles.input} onChangeText={setEmail}  keyboardType='email-address'/>
-              <TextInput placeholder="Cartão Sus *" style={styles.input} onChangeText={setSusCard}  keyboardType='numeric'/>
-              <TextInput placeholder="Senha *" style={styles.input} onChangeText={setPassword} secureTextEntry={true}/>
+              <MaskInput placeholder="Cartão Sus *" style={styles.input} onChangeText={(masked, unmasked) => {setSusCard(unmasked)}} value={susCard}  keyboardType='numeric' mask={[/\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, /\d/,  ' ', /\d/, /\d/, /\d/, /\d/]}/>
+              <TextInput placeholder="Senha *"  style={styles.input} onChangeText={setPassword} secureTextEntry={true}/>
               <TextInput placeholder="Confirmar senha *" style={styles.input} onChangeText={setConfirmPassword} secureTextEntry={true}/>
               <View style={styles.checkboxContainer}>
                   <Text style={styles.textCheckbox}>Aceito os </Text>

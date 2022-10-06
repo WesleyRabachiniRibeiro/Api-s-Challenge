@@ -3,14 +3,13 @@ import React from 'react';
 import {StyleSheet, TouchableOpacity} from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
-import Home from '../pages/Home';
-import Chatbot from '../pages/Chatbot'
-import Settings from '../pages/Settings'
-import Map from '../pages/Map';
+import AmbulanceHome from '../pages/AmbulanceHome';
+import MapaAmbulancia from '../pages/MapaAmbulancia';
+import Paciente from '../pages/Paciente';
 
 const Tab = createBottomTabNavigator()
 
-export default function HomeNavigation(props) {
+export default function AmbulanceNavigation(props) {
     return (
         <Tab.Navigator
         screenOptions={{
@@ -31,7 +30,7 @@ export default function HomeNavigation(props) {
         }}>
           <Tab.Screen
            name="Home"
-           component={Home}
+           component={AmbulanceHome}
            options={{
             headerShown: false,
             tabBarIcon: ({color, size, focused}) => {
@@ -40,39 +39,10 @@ export default function HomeNavigation(props) {
               }
               return <Ionicons name="home-outline" size={size} color={"#fff"}/>
             }
-            
            }}
            />
-          <Tab.Screen name='Chatbot' component={Chatbot}
-           options={{
-            headerShown: true,
-            headerTitle: "",
-            headerLeft: () => (
-              <TouchableOpacity onPress={() => {
-                props.navigation.navigate({name: "Home", merge: true})
-              }}>
-                <Ionicons name='arrow-back-outline' size={35} style={{marginHorizontal: 20}}/>
-              </TouchableOpacity>
-            ),
-            tabBarLabelStyle: {
-              display: "none",
-            },
-            tabBarIconStyle:{
-              bottom: 20,
-              color: "#000"
-            },
-            tabBarIcon: ({color, size, focused}) => {
-              if(focused){
-                return <Ionicons name="chatbox" size={size} color={"#fff"} style={styles.tab}/>
-              }
-              return <Ionicons name="chatbox-outline" size={size} color={"#fff"} style={styles.tab}/>
-            },
-            tabBarStyle: {
-              display: "none"
-            }            
-           }}/>
           <Tab.Screen
-            name='Mapa' component={Map}
+            name='Mapa' component={MapaAmbulancia}
             options={{
             headerShown: false,
             tabBarIcon: ({color, size, focused}) => {
@@ -82,24 +52,18 @@ export default function HomeNavigation(props) {
               return <Ionicons name="map-outline" size={size} color={"#fff"}/>
             }
            }}/>
-           <Tab.Screen
-              name='Settings' component={Settings}
-              options={{
-                headerTitle: "",
-                headerShown: true,
-                headerLeft: () => (
-                  <TouchableOpacity onPress={() => {
-                    props.navigation.navigate({name: "Home", merge: true})
-                  }}>
-                    <Ionicons name='arrow-back-outline' size={35} style={{marginHorizontal: 20}}/>
-                  </TouchableOpacity>
-                ),
-                tabBarStyle:{
-                  display: 'none'
-                },
-                tabBarButton: () => null,
-              }}
-           />
+
+          <Tab.Screen
+            name='Paciente' component={Paciente}
+            options={{
+            headerShown: false,
+            tabBarIcon: ({color, size, focused}) => {
+              if(focused){
+                return <Ionicons name="map" size={size} color={"#fff"}/>
+              }
+              return <Ionicons name="map-outline" size={size} color={"#fff"}/>
+            }
+           }}/>
         </Tab.Navigator>
     );
 

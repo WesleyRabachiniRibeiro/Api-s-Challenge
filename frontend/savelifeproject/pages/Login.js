@@ -1,39 +1,61 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TextInput, View, TouchableOpacity, PermissionsAndroid } from 'react-native';
 import CheckBox from 'expo-checkbox';
-import axios from "axios";
+import { GlobalContext } from '../components/GlobalContext';
+import axios from 'axios';
 import {Buffer} from "buffer"
-import base64 from 'react-native-base64';
 
 export default function Login(props) {
+
+  const global = React.useContext(GlobalContext)
 
   const [boxIsChecked, setBoxIsChecked] = useState(false);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
+    // const login = () => {
+    //   props.navigation.navigate("HomeNavigation")
+    // }
+
     const login = () => {
       const usernamePasswordBuffer = Buffer.from(email + ':' + password);
       const base64data = usernamePasswordBuffer.toString('base64');
-      console.log(base64)
-      axios.get(
-        'https://api-challenge.azurewebsites.net/v1/user/',
+      global.setToken(base64data)
+      console.log(email)
+      axios
+      .get(
+        `https://api-challenge.azurewebsites.net/v1/user/email/${email}`,
         {
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Basic ${base64data}`
-          }
-        })
-        .then((res) => {
-          console.log(res.data)
-          props.navigation.navigate("HomeNavigation", {email})
-        })
-        .catch((err) => {
-          console.error(err);
-        })
-      console.log("pão")
+          },
+        }
+      )
+      .then((res) => {
+          global.setId(res.data.id)
+          global.setEmail(res.data.email)
+          global.setName(res.data.name)
+          global.setPhone(res.data.phone)
+          global.setAge(res.data.age)
+          global.setCpf(res.data.cpf)
+          global.setSusCard(res.data.susCard)
+          global.setPicture(res.data.picture)
+          console.log(res.data.id)
+          global.setRoles(res.data.role)
+          if(res.data.role.indexOf("ROLE_AMBULANCE") > -1){
+            props.navigation.navigate("AmbulanceNavigation")
+          }else if(res.data.role.indexOf("ROLE_HOSPITAL") > -1){
+            console.log("Hospital logged")
+          }else if(res.data.role.indexOf("ROLE_USER") > -1){
+            props.navigation.navigate("HomeNavigation")
+          }  
+      })
+      .catch((err) => {
+        console.error(err);
+      });
     }
-
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Login</Text>
