@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, TouchableOpacity, TextInput, Image, FlatList, Button, TouchableHighlight, ScrollView } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, TextInput, Image, FlatList, } from "react-native";
 import axios from "axios";
 import base64 from "react-native-base64";
 import * as FileSystem from "expo-file-system";
@@ -143,9 +143,6 @@ export default function Chatbot() {
       });
   }, []);
 
-
-  
-
   const sendMessage = () => {
     axios
       .post(
@@ -185,8 +182,7 @@ export default function Chatbot() {
         <Image source={require("../assets/phone.png")} style={styles.call}/>
       </View>
       <Text style={styles.title}>Chamada em andamento</Text>
-      <FlatList data={lista} keyExtractor={item => item.id} renderItem={
-        ({item})=> {
+      <FlatList  data={lista} keyExtractor={item => item.id} renderItem={({item})=> {
           return <Message {...item}/>
         }} style={styles.flatList}/>
       <View style={styles.inputContainer}>
@@ -199,7 +195,7 @@ export default function Chatbot() {
           <Ionicons name="send" style={styles.buttonText}/>
         </TouchableOpacity>
       </View>
-      <Accordion/>
+      {global.isRequest && <Accordion/>}
     </View>
   );
 }
@@ -207,19 +203,19 @@ export default function Chatbot() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 40,
+    paddingTop: 10,
     backgroundColor: "#FFFFFF",
     paddingHorizontal: 20
   },
   callContainer: {
     backgroundColor: "#FA533E",
     alignSelf: 'center',
-    padding: 40,
+    padding: 20,
     borderRadius: 90
   },
   call: {
-    width: 100,
-    height: 100,
+    width: 50,
+    height: 50,
     resizeMode: "contain"
   },
   title: {
@@ -232,7 +228,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginTop: 10,
-    marginBottom: 100
+    marginBottom: global.isRequest ? 80 : 10
   },
   input: {
     backgroundColor: '#e0e0e0',
@@ -256,7 +252,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     marginTop: 20,
     marginBottom: 0,
-    flex: 1
+    flex: 1,
   },
   bloom: {
     shadowColor: "#000",

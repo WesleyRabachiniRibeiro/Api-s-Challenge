@@ -34,6 +34,11 @@ export default function Login(props) {
         }
       )
       .then((res) => {
+          if(res.data.role.indexOf("ROLE_AMBULANCE") > -1){
+            props.navigation.navigate("AmbulanceHome")
+          }else if(res.data.role.indexOf("ROLE_HOSPITAL") > -1){
+            console.log("Hospital logged")
+          }else if(res.data.role.indexOf("ROLE_USER") > -1){
           global.setId(res.data.id)
           global.setEmail(res.data.email)
           global.setName(res.data.name)
@@ -44,12 +49,7 @@ export default function Login(props) {
           global.setPicture(res.data.picture)
           console.log(res.data.id)
           global.setRoles(res.data.role)
-          if(res.data.role.indexOf("ROLE_AMBULANCE") > -1){
-            props.navigation.navigate("AmbulanceHome")
-          }else if(res.data.role.indexOf("ROLE_HOSPITAL") > -1){
-            console.log("Hospital logged")
-          }else if(res.data.role.indexOf("ROLE_USER") > -1){
-            props.navigation.navigate("HomeNavigation")
+          props.navigation.navigate("HomeNavigation")
           }  
       })
       .catch((err) => {

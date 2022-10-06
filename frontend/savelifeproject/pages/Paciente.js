@@ -16,26 +16,24 @@ export default function App() {
       <View style={styles.profile}>
         <Ionicons name="person-circle-outline" size={80}/>
         <View>
-          <Text style={styles.profileName}>{global.name}</Text>
-          <Text style={styles.profilePhone}>(11) 99203-3498</Text>
+          <Text style={styles.profileName}>Daniel Cariatte</Text>
+          <Text style={styles.profilePhone}>(11) 94037-2773</Text>
         </View>
       </View>
 
       <View style={styles.contentCard}>
         <Text style={styles.contentTitle}>Informações da ocorrencia:</Text>
-        <Text style={styles.contentText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</Text>
-        <Text style={styles.contentText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</Text>
-        <Text style={styles.contentText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</Text>
+        <Text style={styles.contentText}>Meu pai caiu da escada e não esta sentindo suas pernas me ajuda</Text>
       </View>
 
       <View style={styles.contentCard}>
         <Text style={styles.contentTitle}>Local: </Text>
-        <Text style={styles.contentText}>Rua Dr. José Carlos de Araújo, Novo Osasco, Osasco</Text>
+        <Text style={styles.contentText}>Av. Lins de Vasconcelos, 1222 - Aclimação, São Paulo - SP, 01538-001</Text>
       </View>
 
       <View style={styles.waitContainer}>
-        <Text style={styles.waitTime}>20 min</Text>
-        <Text style={styles.waitDistance}>21 km * 21:48</Text>
+        <Text style={styles.waitTime}>5 min</Text>
+        <Text style={styles.waitDistance}>1 km * 20:00</Text>
       </View>
     </View>
   );
@@ -75,7 +73,7 @@ const styles = StyleSheet.create({
   contentTitle: {
     fontSize: 20,
     marginBottom: 15,
-    fontWeight: 700
+    fontWeight: "700"
   },
   contentText: {
     fontSize: 13,

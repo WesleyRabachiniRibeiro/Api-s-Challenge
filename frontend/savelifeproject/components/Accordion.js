@@ -21,7 +21,7 @@ export default function Accordion() {
         </TouchableOpacity>
         <View style={[styles.accordionContent, isActive ? styles.active : styles.desactive]}>
           <View style={styles.accordionMap}>
-            <Mapa flex={0.9}/>
+            <Mapa flex={0.9} hasRequest={true} />
           </View>
         </View>
       </View>
