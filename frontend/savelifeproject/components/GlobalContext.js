@@ -20,6 +20,7 @@ export const GlobalStorage = ({children}) => {
     const [roles, setRoles] = React.useState("")
     const [token, setToken] = React.useState("")
     const [isRequest, setIsRequest] = React.useState(false);
+    const [accountNumber, setAccountNumber] = React.useState("")
 
     const firebaseConfig = {
       apiKey: "AIzaSyCFPeKepVl4QVqGXJLwdAbmADOQcMrW_-0",
@@ -66,8 +67,28 @@ export const GlobalStorage = ({children}) => {
       console.log(data)
     });
 
+    const dbRefTelefone = ref(database, 'telefone/');
+
+      onValue(dbRefTelefone, (snapshot) => {
+        const accountTelefone = snapshot.val();
+        
+      })
+
+      let accountTelefone;
+
+      function pegaTelefone(){
+        const dbRefTelefone = ref(database, 'telefone/');
+
+      onValue(dbRefTelefone, (snapshot) => {
+        accountTelefone = snapshot.val();
+        console.log(accountTelefone.numero)
+        setAccountNumber(accountTelefone.numero)
+      })
+      }
+
     React.useEffect(() => {
       saveLocation()
+      pegaTelefone()
     }, [])
 
     const saveLocation = async () => {
@@ -94,7 +115,7 @@ export const GlobalStorage = ({children}) => {
       }}
 
     return (
-    <GlobalContext.Provider value={{database, id, setId, coords, setCoords, name, setName, email, setEmail, phone, setPhone, age, setAge, cpf, setCpf, susCard, setSusCard, picture, setPicture, healthPlan, setHealthPlan, roles, setRoles, token, setToken, writeUserCoords, writeAmbulanceCoords, isRequest, setIsRequest}}>
+    <GlobalContext.Provider value={{accountNumber, setAccountNumber, database, id, setId, coords, setCoords, name, setName, email, setEmail, phone, setPhone, age, setAge, cpf, setCpf, susCard, setSusCard, picture, setPicture, healthPlan, setHealthPlan, roles, setRoles, token, setToken, writeUserCoords, writeAmbulanceCoords, isRequest, setIsRequest}}>
         {children}
     </GlobalContext.Provider>
     )

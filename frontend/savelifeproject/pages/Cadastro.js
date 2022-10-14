@@ -58,7 +58,7 @@ export default function Cadastro (props) {
         setAge(year_now - year);
         
         if (month_now < month|| month_now == month && day_now < day) {
-          setAge(age--);
+          setAge(age);
         }
       }
     }
