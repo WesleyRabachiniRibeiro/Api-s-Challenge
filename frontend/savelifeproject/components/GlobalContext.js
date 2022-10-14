@@ -53,8 +53,8 @@ export const GlobalStorage = ({children}) => {
       set(ref(database, 'users/' + "ambulancia"), {
         userId: 2,
         coords: {
-          latitude: -23.5659659692246, 
-          longitude: -46.62188934541993
+          latitude: -23.4973455705681,
+          longitude: -46.44039950439975,
         }
       })
     }

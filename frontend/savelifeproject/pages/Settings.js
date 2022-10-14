@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
+import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { GlobalContext } from '../components/GlobalContext';
@@ -23,7 +22,7 @@ export default function Settings(props) {
           </View>
         </View>
         <View style={styles.cardContainer}>
-          <TouchableOpacity style={styles.card}>
+          <TouchableOpacity style={styles.card} onPress={() => {props.navigation.navigate("AccountSettings")}}>
             <Ionicons name='key' style={styles.cardIcon} />
             <View>
               <Text style={styles.cardTitle}>Conta</Text>

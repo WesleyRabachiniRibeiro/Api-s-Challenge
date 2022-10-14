@@ -29,6 +29,8 @@ export default function Mapa(props){
         latitudeDelta: 0.05,
         longitudeDelta: 0.05
     }
+    console.log(ambulanceCoords.latitude)
+    console.log(ambulanceCoords.longitude)
     });
 
     const [origin, setOrigin] = useState(null)
@@ -44,8 +46,6 @@ export default function Mapa(props){
                 
             }
         })
-        console.log(hospitalsList)
-        console.log(hospitalsList.length)
         setHospitals(hospitalList)
     }
 
@@ -64,11 +64,7 @@ export default function Mapa(props){
 
     const axiosGet = () => {
         axios.get(
-            baseUrl,
-        {
-            headers: { "Content-Type": "application/json"},
-            cancelToken: source.token
-        })
+            baseUrl, {headers: { "Content-Type": "application/json"}, cancelToken: source.token})
         .then((res) => {
             filterHospital(res.data.results)
             setDestination({
@@ -92,7 +88,7 @@ export default function Mapa(props){
         <SafeAreaView style={styles.viewPrincipal}>
             <StatusBar style="light" backgroundColor={"#000000"}/>
             <MapView region={origin} followsUserLocation={true} showsUserLocation={true} ref={mapEl} style={{flex: props.flex ? props.flex : 1}}>
-                {
+                { !props.hasRequest &&
                     Object.values(hospitals).map(value => {
                         return <Marker key={value.name} coordinate={{latitude: value.geometry.location.lat, longitude: value.geometry.location.lng}} title={value.name} pinColor={"#6914FF"}>
                             <FontAwesome5 style={{color: '#6914FF'}} name="hospital-alt" size={20}/>
