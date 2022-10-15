@@ -39,6 +39,7 @@ export default function Cadastro (props) {
       console.log(date)
       console.log(cellphoneNumber)
       console.log(email)
+      console.log(susCard)
       console.log(password)
       console.log(confirmPassword)
     }
@@ -57,7 +58,7 @@ export default function Cadastro (props) {
         setAge(year_now - year);
         
         if (month_now < month|| month_now == month && day_now < day) {
-          setAge(age--);
+          setAge(age);
         }
       }
     }
@@ -65,6 +66,7 @@ export default function Cadastro (props) {
 
 
   const save = () => {
+      print()
       axios.post(
         'https://api-challenge.azurewebsites.net/v1/user/',
         {

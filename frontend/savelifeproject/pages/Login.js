@@ -38,11 +38,12 @@ export default function Login(props) {
           global.setEmail(res.data.email)
           global.setName(res.data.name)
           global.setPhone(res.data.phone)
+          global.setAccountNumber(res.data.phone)
           global.setAge(res.data.age)
           global.setCpf(res.data.cpf)
           global.setSusCard(res.data.susCard)
           global.setPicture(res.data.picture)
-          console.log(res.data.id)
+          console.log(`ID ${res.data.id}`)
           global.setRoles(res.data.role)
           if(res.data.role.indexOf("ROLE_AMBULANCE") > -1){
             props.navigation.navigate("AmbulanceNavigation")
