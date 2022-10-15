@@ -164,8 +164,8 @@ export default function Chatbot() {
       .then((res) => {
         setContext(res.data.context)
         setChatMessage(res.data.output.text)
-        if(res.data.output.text == "Respire fundo e conte para mim o que aconteceu, enquanto isso iremos fazer a requisição de sua ambulância"){
-          // callAmbulance()
+        if(res.data.output.text == "Respire fundo e conte para mim com mais detalhes  o que aconteceu, enquanto isso iremos fazer a requisição de sua ambulância"){
+          callAmbulance()
           global.setIsRequest(true)
         }
         if(global.isRequest){

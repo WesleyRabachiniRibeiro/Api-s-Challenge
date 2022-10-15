@@ -7,8 +7,6 @@ import com.savelife.project.entities.Urgency;
 
 public class SearchRequest {
 
-    private Long id;
-
     private SearchUserDTO user;
 
     private String hospital;
@@ -19,21 +17,12 @@ public class SearchRequest {
 
     private Urgency urgent;
 
-    public SearchRequest(Long id,SearchUserDTO user, String hospital, SearchAmbulanceToRequest ambulance, String description, Urgency urgent) {
-        this.id = id;
+    public SearchRequest(SearchUserDTO user, String hospital, SearchAmbulanceToRequest ambulance, String description, Urgency urgent) {
         this.user = user;
         this.hospital = hospital;
         this.ambulance = ambulance;
         this.description = description;
         this.urgent = urgent;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public SearchUserDTO getUser() {

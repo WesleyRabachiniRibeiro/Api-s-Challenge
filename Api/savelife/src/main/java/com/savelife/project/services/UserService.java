@@ -2,6 +2,7 @@ package com.savelife.project.services;
 
 import com.savelife.project.entities.Role;
 import com.savelife.project.entities.UserModel;
+import com.savelife.project.helper.NullAwareBeanUtilsBean;
 import com.savelife.project.repositories.RoleRepository;
 import com.savelife.project.repositories.UserRepository;
 import org.springframework.data.domain.Page;
@@ -14,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import javax.persistence.EntityNotFoundException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Optional;
 
 @Service
@@ -22,11 +24,13 @@ public class UserService implements UserDetailsService {
     private final UserRepository repository;
     private final PasswordEncoder passwordEncoder;
     private final RoleRepository roleRepository;
+    private final NullAwareBeanUtilsBean beanUtilsBean;
 
-    private  UserService(UserRepository repository, PasswordEncoder passwordEncoder, RoleRepository roleRepository){
+    private  UserService(UserRepository repository, PasswordEncoder passwordEncoder, RoleRepository roleRepository, NullAwareBeanUtilsBean beanUtilsBean){
         this.repository = repository;
         this.passwordEncoder = passwordEncoder;
         this.roleRepository = roleRepository;
+        this.beanUtilsBean = beanUtilsBean;
     }
 
     public UserModel saveUser(UserModel user){
@@ -40,7 +44,7 @@ public class UserService implements UserDetailsService {
         return repository.save(user);
     }
 
-    public UserModel findUser(Long id){
+    public UserModel findUser(@PathVariable Long id){
         Optional<UserModel> user = repository.findById(id);
         return user.orElseThrow(() -> new EntityNotFoundException("User Not Found!"));
     }
@@ -53,14 +57,10 @@ public class UserService implements UserDetailsService {
         return repository.findAll(pageable);
     }
 
-    public UserModel updateUser(UserModel updatedUser, Long id){
+    public UserModel updateUser(UserModel updatedUser, Long id) throws InvocationTargetException, IllegalAccessException {
         UserModel user = this.findUser(id);
-        updatedUser.setPassword(passwordEncoder.encode(updatedUser.getPassword()));
-        updatedUser.setId(user.getId());
-        if(updatedUser.getRoles() == null){
-            updatedUser.setRoles(user.getRoles());
-        }
-        return repository.save(updatedUser);
+        beanUtilsBean.copyProperties(user, updatedUser);
+        return repository.save(user);
     }
 
     public void deleteUser(@PathVariable Long id){

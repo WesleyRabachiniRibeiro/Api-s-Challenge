@@ -56,13 +56,11 @@ public class UserModel implements UserDetails {
             inverseJoinColumns = @JoinColumn(name = "CD_FUNCAO"))
     private List<Role> roles;
 
-
     @ManyToMany(mappedBy = "users")
     private List<Ambulance> ambulance;
 
     @ManyToMany(mappedBy = "users")
     private List<Hospital> hospital;
-
 
     public UserModel(Long id, String name, Integer age, String phone, String email, String password, byte[] picture, String healthPlan, String susCard, String cpf, List<Role> roles) {
         this.id = id;
