@@ -21,7 +21,6 @@ public class RequestMapper {
     }
     public static SearchRequest fromEntity(Request request){
         return new SearchRequest(
-                request.getId(),
                 UserMapper.fromEntity(request.getUser()),
                 request.getHospital().getName(),
                 AmbulanceMapper.fromEntityRequest(request.getAmbulance()),

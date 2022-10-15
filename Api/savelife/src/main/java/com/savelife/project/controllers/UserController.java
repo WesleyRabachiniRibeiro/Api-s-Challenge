@@ -14,15 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.PermitAll;
 
@@ -50,12 +42,11 @@ public class UserController {
         }
     }
 
-    @GetMapping("/email/{email}")
+    @GetMapping("/email")
     @ApiOperation(value = "Return user to email")
-    public ResponseEntity<SearchUserEmail> findUserbyEmail(@PathVariable String email){
+    public ResponseEntity<SearchUserEmail> findUserbyEmail(@RequestBody RegistryEmail dto){
         try {
-            UserModel user = service.findUserByEmail(email);
-            System.out.println(UserMapper.fromEntitytoUserEmail(user));
+            UserModel user = service.findUserByEmail(dto.getEmail());
             return ResponseEntity.ok(UserMapper.fromEntitytoUserEmail(user));
         }catch (Exception ex){
             return ResponseEntity.notFound().build();
@@ -79,13 +70,13 @@ public class UserController {
         }
     }
 
-    @PutMapping("{id}")
+    @PatchMapping("{id}")
     @ApiOperation(value = "Update User to ID")
     public ResponseEntity<SearchUserDTO> updateUser(@RequestBody RegistryUserDTO dto, @PathVariable Long id){
         try{
             UserModel user = service.updateUser(UserMapper.fromDTO(dto), id);
             return ResponseEntity.ok(UserMapper.fromEntity(user));
-        }catch (RuntimeException ex){
+        }catch (Exception ex){
             return ResponseEntity.notFound().build();
         }
     }

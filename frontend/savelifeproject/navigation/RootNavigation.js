@@ -8,6 +8,7 @@ import HomeNavigation from './HomeNavigation';
 import AmbulanceHome from '../pages/AmbulanceHome';
 import MapaAmbulancia from '../pages/MapaAmbulancia';
 import Paciente from '../pages/Paciente';
+import AccountSettings from '../pages/AccontSettings';
 
 const Stack = createStackNavigator();
 
@@ -22,6 +23,7 @@ export default function RootNavigation() {
           <Stack.Screen name='AmbulanceHome' component={AmbulanceHome}/>
           <Stack.Screen name='MapaAmbulancia' component={MapaAmbulancia}/>
           <Stack.Screen name='Paciente' component={Paciente}/>
+          <Stack.Screen name='AccountSettings' component={AccountSettings}/>
         </Stack.Navigator>
     );
 }
