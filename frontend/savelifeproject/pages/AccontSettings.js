@@ -31,33 +31,30 @@ export default function AccountSettings(props){
     const database = getDatabase(app)
 
     function modificaTelefone(){
-      axios.post(`https://api-challenge.azurewebsites.net/v1/user/${global.id}`, {
+      axios.post(`https://api-challenge.azurewebsites.net/v1/user/${global.id}`,{
+        "phone": telefone,
+      }, 
+      {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Basic ${global.token}`
         },
       }).then((res) => {
-        
+        console.log('Modificou')
         console.log(res.data)
       }).catch((err) => {
         console.log(global.id)
         console.log(err)
       })
-
-      // set(ref(database, 'telefone/'), {
-      //   id: uuid.v4(),
-      //   numero: telefone
-      // })
     }
 
-    function excluiTelefone(){
+    function excluiConta(){
       axios.delete(`https://api-challenge.azurewebsites.net/v1/user/${global.id}`, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Basic ${global.token}`
         },
       }).then((res) => {
-        
         console.log(res.data)
       }).catch((err) => {
         console.log(global.id)
@@ -67,12 +64,12 @@ export default function AccountSettings(props){
     
     return (
         <View style={{marginTop: 40}}>
-            <Text>Seu telefone: {global.accountNumber} </Text>
+            <Text>Seu telefone: {global.phone} </Text>
             <Text style={{marginTop: 50}}>Digite aqui para mudar seu telefone</Text>
             <TextInput onChangeText={setTelefone} keyboardType="number-pad" style={{borderWidth: 1, padding: 5}}/>
             <View >
               <Button title={"Mudar Telefone"} onPress={() => {modificaTelefone()}}/>
-              <Button title="Deletar Conta" color={'red'} onPress={() => {excluiTelefone()}}/>
+              <Button title="Deletar Conta" color={'red'} onPress={() => {excluiConta()}}/>
             </View>
         </View>
     )
