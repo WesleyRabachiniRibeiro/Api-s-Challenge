@@ -1,11 +1,5 @@
 package com.savelife.project.dto.user;
 
-import com.savelife.project.entities.Role;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.data.repository.cdi.Eager;
-
-import java.util.List;
-
 public class SearchUserEmail {
 
     private Long id;
@@ -26,9 +20,7 @@ public class SearchUserEmail {
 
     private String cpf;
 
-    private List<String> role;
-
-    public SearchUserEmail(Long id, String name, Integer age, String phone, String email, byte[] picture, String healthPlan, String susCard, String cpf, List<String> role) {
+    public SearchUserEmail(Long id, String name, Integer age, String phone, String email, byte[] picture, String healthPlan, String susCard, String cpf) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -38,7 +30,6 @@ public class SearchUserEmail {
         this.healthPlan = healthPlan;
         this.susCard = susCard;
         this.cpf = cpf;
-        this.role = role;
     }
 
     public Long getId() {
@@ -111,13 +102,5 @@ public class SearchUserEmail {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }
-
-    public List<String> getRole() {
-        return role;
-    }
-
-    public void setRole(List<String> role) {
-        this.role = role;
     }
 }
